@@ -5,11 +5,13 @@
 <body>
 <section class="view login">
 	<div id="userdata">laddar...</div>
+	<img id="profilepic" alt="profilbild" />
 </section>
 <section class="view profile"></section>
 <section class="view search"></section>
 <script>
-	document.getElementById('userdata').innerHTML = JSON.stringify(userdata);
+	document.getElementById('userdata').innerHTML = userdata.displayName;
+	document.getElementById('profilepic').src = 'https://graph.facebook.com/'+userdata.username+'/picture';
 </script>
 </body>
 </html>

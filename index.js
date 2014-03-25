@@ -56,7 +56,6 @@ passport.use(new FacebookStrategy({
     callbackURL: "http://samak.foo.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
-    
 	console.log(arguments);
 	done(null,profile);
   }
