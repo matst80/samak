@@ -7,8 +7,15 @@ var util = require('util');
 var fs = require('fs');
 var app = express();
 var passport = require('passport');
+var mysql =  require('mysql');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
+var pool =  mysql.createPool({
+	host : 'localhost',
+  	user : 'root',
+  	database:'samak',
+  	password: 'bananer'
+  });	
 
 var FACEBOOK_APP_ID = '136862019768932';
 var FACEBOOK_APP_SECRET = '0946637710c380df58d81760e2a6f248';
@@ -34,6 +41,22 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(user, done) {
   console.log(user);
   done(null, user);
+});
+
+app.get('/api/routes',function(req,res) {
+	pool.getConnection(function(err, connection){
+		res.header("Content-Type", "text/javascript");
+		connection.query( 'select * from routes',  function(err, rows){
+		  	if(err)	{
+		  		throw err;
+		  	}else{
+		  		console.log( rows );
+				res.send(JSON.stringify(rows));		  		
+		  	}
+		  });
+		  
+		  connection.release();
+	});
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
