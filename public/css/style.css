@@ -1,0 +1,150 @@
+@font-face {
+  font-family: 'robotothin';
+  src: url("fonts/Roboto-Thin-webfont.eot");
+  src: url("fonts/Roboto-Thin-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Roboto-Thin-webfont.woff") format("woff"), url("fonts/Roboto-Thin-webfont.ttf") format("truetype"), url("fonts/Roboto-Thin-webfont.svg#robotothin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotobold';
+  src: url("fonts/Roboto-Bold-webfont.eot");
+  src: url("fonts/Roboto-Bold-webfont.eot?#iefix") format("embedded-opentype"), url("fonts/Roboto-Bold-webfont.woff") format("woff"), url("fonts/Roboto-Bold-webfont.ttf") format("truetype"), url("fonts/Roboto-Bold-webfont.svg#robotobold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 24, style.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  font-family: 'robotothin', serif;
+}
+/* line 29, style.scss */
+body.start {
+  background: url(../img/start.jpg) center center no-repeat;
+  background-size: auto 100%;
+}
+
+/* line 34, style.scss */
+.bold {
+  font-family: 'robotobold', serif;
+}
+
+/* line 37, style.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 40, style.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 43, style.scss */
+.startlogo {
+  width: 90px;
+  margin: 0 auto;
+  display: block;
+  margin-top: 40px;
+}
+
+/* line 49, style.scss */
+.logotext {
+  width: 80%;
+  margin: 10px auto 30px auto;
+}
+
+/* line 53, style.scss */
+.startbtn {
+  width: 240px;
+  height: 50px;
+  margin: 10px auto;
+  display: block;
+  color: #FFF;
+  font-size: 12px;
+}
+/* line 60, style.scss */
+.startbtn .icon {
+  height: 50px;
+  width: 50px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: block;
+  float: left;
+}
+/* line 68, style.scss */
+.startbtn .btntext {
+  line-height: 50px;
+  width: 178px;
+  height: 50px;
+  padding-right: 10px;
+  text-align: right;
+  float: left;
+}
+/* line 76, style.scss */
+.startbtn.fb {
+  background-color: #2980b9;
+  border-bottom: 1px solid #1f6daa;
+}
+/* line 79, style.scss */
+.startbtn.fb .icon {
+  background-image: url(../img/fb-icon.png);
+  border-right: 1px solid #1f6daa;
+}
+/* line 83, style.scss */
+.startbtn.fb .btntext {
+  border-left: 1px solid #2980b9;
+}
+/* line 87, style.scss */
+.startbtn.twitter {
+  background-color: #3498db;
+  border-bottom: 1px solid #237fcf;
+}
+/* line 90, style.scss */
+.startbtn.twitter .icon {
+  background-image: url(../img/twitter-icon.png);
+  border-right: 1px solid #237fcf;
+}
+/* line 94, style.scss */
+.startbtn.twitter .btntext {
+  border-left: 1px solid #51ace3;
+}
+/* line 98, style.scss */
+.startbtn.google {
+  background-color: #e74c3c;
+  border-bottom: 1px solid #e34334;
+}
+/* line 101, style.scss */
+.startbtn.google .icon {
+  background-image: url(../img/gplus-icon.png);
+  border-right: 1px solid #e34334;
+}
+/* line 105, style.scss */
+.startbtn.google .btntext {
+  border-left: 1px solid #ec6959;
+}
+/* line 109, style.scss */
+.startbtn.register {
+  background-color: #29b94b;
+  border-bottom: 1px solid #21ad3e;
+}
+/* line 112, style.scss */
+.startbtn.register .icon {
+  background-image: url(../img/gplus-icon.png);
+  border-right: 1px solid #21ad3e;
+}
+/* line 116, style.scss */
+.startbtn.register .btntext {
+  border-left: 1px solid #43c766;
+}
+
+/* line 121, style.scss */
+.ortxt {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  margin: 20px auto;
+  color: #FFF;
+}
