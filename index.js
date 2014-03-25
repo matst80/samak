@@ -29,12 +29,12 @@ app.get('/auth/facebook/callback',
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost/auth/facebook/callback"
+    callbackURL: "http://samak.foo.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, done) {
     
 	console.log(arguments);
-	done();
+	done(null,{test:1});
   }
 ));
 
