@@ -88,7 +88,37 @@ users.prototype.findOrCreate = function (profile,cb,err) {
 	cb();
 };
 
+var routes = function () {
+	
+}
+
+routes.prototype.init = function() {};
+routes.prototype.saveRoute = function(routedata) {
+	var t = this;
+	pool.getConnection(function(err, connection){
+		var sql = "insert into routes (`Start`,`End`,`StartTime`,`Title`) VALUES ('"+routedata.start+"','"+routedata.end+"','"+routedata.time+"','"+routedata.title+"')";
+		console.log(sql);
+		connection.query( sql,  function(err, rows){
+			console.log('efter sparning',err,rows);
+			
+		});
+	 	connection.release();
+	});		
+};
+
 var User = new users();
+var Route = new routes();
+
+app.post('/api/route/add',function(req,res) {
+	res.header("Content-Type", "text/javascript");
+
+	var saveData = {
+		start:'test',
+		end:''
+	};
+	Route.saveRoute(saveData);
+	res.send(JSON.stringify(saveData));	
+});
 
 app.get('/api/routes',function(req,res) {
 	pool.getConnection(function(err, connection){
