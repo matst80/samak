@@ -24,6 +24,8 @@ app.configure(function() {
   app.use(app.router);
 });
 
+var user = {};
+
 passport.serializeUser(function(user, done) {
   console.log(user);
   done(null, user);
@@ -39,10 +41,13 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook',
   passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
 );
-
+app.get('/userdata.js',function(req, res) {
+  res.header("Content-Type", "text/javascript");
+  res.send('var userdata = '+JSON.stringify(req.user));
+});
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { successRedirect: '/index.htm',
-                                      failureRedirect: '/login' }));
+
+passport.authenticate('facebook', { successRedirect: '/loggedin.htm', failureRedirect: '/login' }));
 
 
 passport.use(new FacebookStrategy({
@@ -53,13 +58,8 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, done) {
     
 	console.log(arguments);
-	done(null,{provider:'facebook',userid:profile.id});
+	done(null,profile);
   }
 ));
-/*
-app.use(function(req, res){
-	//console.log(req);
-	res.end(200,'hej');
-});
-*/
+
 app.listen(80);
