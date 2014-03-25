@@ -15,7 +15,17 @@ var FACEBOOK_APP_SECRET = '0946637710c380df58d81760e2a6f248';
 
 app.use(express.static('./public'));
 app.use(express.logger());
-/*
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+app.get('/auth/facebook',
+  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+);
+
+app.get('/auth/facebook/callback', 
+  passport.authenticate('facebook', { successRedirect: '/index.htm',
+                                      failureRedirect: '/login' }));
+
 passport.use(new FacebookStrategy({
     clientID: FACEBOOK_APP_ID,
     clientSecret: FACEBOOK_APP_SECRET,
@@ -27,7 +37,7 @@ passport.use(new FacebookStrategy({
 	done();
   }
 ));
-*/
+
 app.use(function(req, res){
 	//console.log(req);
 	res.end(200,'hej');
