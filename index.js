@@ -1,0 +1,35 @@
+var http = require('http');
+var url  = require('url');
+var express  = require('express');
+
+var gm = require('googlemaps');
+var util = require('util');
+var fs = require('fs');
+var app = express();
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+
+var FACEBOOK_APP_ID = '136862019768932';
+var FACEBOOK_APP_SECRET = '0946637710c380df58d81760e2a6f248';
+
+app.use(express.static('./public'));
+app.use(express.logger());
+/*
+passport.use(new FacebookStrategy({
+    clientID: FACEBOOK_APP_ID,
+    clientSecret: FACEBOOK_APP_SECRET,
+    callbackURL: "http://localhost/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    
+	console.log(arguments);
+	done();
+  }
+));
+*/
+app.use(function(req, res){
+	//console.log(req);
+	res.end(200,'hej');
+});
+app.listen(80);
