@@ -43,6 +43,53 @@ passport.deserializeUser(function(user, done) {
   done(null, user);
 });
 
+
+var users = function() {
+	this.init();
+}
+users.prototype.loadFromDb = function(cb) {
+	var t = this;
+	pool.getConnection(function(err, connection){
+		connection.query( 'select * from users',  function(err, rows){
+			t.allUsers = rows;
+			t.isLoaded = true;
+		});
+	 	connection.release();
+	});
+};
+users.prototype.init = function() {
+	
+	this.loadFromDb();
+};
+users.prototype.createUser = function(profile,cb) {
+	var t = this;
+	pool.getConnection(function(err, connection){
+		var sql = "insert into users (`Key`,`Name`) VALUES ('"+profile.id+"','"+profile.username+"')";
+		console.log(sql);
+		connection.query( sql,  function(err, rows){
+			console.log('efter sparning',err,rows);
+			t.loadFromDb();
+		});
+	 	connection.release();
+	});	
+}
+users.prototype.findOrCreate = function (profile,cb,err) {
+	var foundUser;
+	for(var i=0;i<this.allUsers.length;i++)
+	{
+		var cuser = this.allUsers[i];
+		if (profile.id==cuser.Key)
+			foundUser = cuser;
+	}
+	if (!foundUser)
+	{
+		this.createUser(profile,cb);
+	}
+	cb();
+};
+
+var User = new users();
+
 app.get('/api/routes',function(req,res) {
 	pool.getConnection(function(err, connection){
 		res.header("Content-Type", "text/javascript");
@@ -80,6 +127,9 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
 	console.log(arguments);
+	User.findOrCreate(profile,function() {
+		console.log('saved');
+	});
 	done(null,profile);
   }
 ));
