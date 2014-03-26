@@ -1,6 +1,7 @@
 var passport = require('passport'),
 	FacebookStrategy = require('passport-facebook').Strategy,
-	TwitterStrategy = require('passport-twitter').Strategy;
+	TwitterStrategy = require('passport-twitter').Strategy,
+	GoogleStrategy = require('passport-google').Strategy;
 
 var FACEBOOK_APP_ID = '136862019768932';
 var FACEBOOK_APP_SECRET = '0946637710c380df58d81760e2a6f248';
@@ -25,12 +26,20 @@ module.exports = function(app,user) {
 
 	app.get('/auth/twitter', passport.authenticate('twitter'));
 
+	app.get('/auth/google', passport.authenticate('google'));
+
+	app.get('/logout', function(req, res){
+		req.logout();
+		res.redirect('/');
+	});
 
 	var authOptions = { successRedirect: '/', failureRedirect: '/' };
 
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', authOptions));
 
 	app.get('/auth/facebook/callback', passport.authenticate('facebook', authOptions));
+
+	app.get('/auth/google/return', passport.authenticate('google', authOptions));
 
 	function parseLoginResult(accessToken, refreshToken, profile, done) {
 		console.log(arguments);
@@ -52,4 +61,17 @@ module.exports = function(app,user) {
 		consumerSecret: TWITTER_CONSUMER_SECRET,
 		callbackURL: baseUrl+"/auth/twitter/callback"
 	}, parseLoginResult ));
+
+	passport.use(new GoogleStrategy({
+		returnURL: baseUrl+'/auth/google/return',
+		realm: baseUrl+'/'
+	},
+	  function(identifier, profile, done) {
+	    console.log(profile);
+	    user.findOrCreate(profile,function() {
+			console.log('saved');
+		});
+		done(null,profile);
+	  }
+	));
 };
