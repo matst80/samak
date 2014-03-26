@@ -8,6 +8,8 @@ var fs = require('fs');
 var app = express();
 var passport = require('passport');
 var mysql =  require('mysql');
+var RestServer =  require('./restserver.js');
+var Users = require('./users.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 var pool =  mysql.createPool({
@@ -31,8 +33,6 @@ app.configure(function() {
   app.use(app.router);
 });
 
-var user = {};
-
 passport.serializeUser(function(user, done) {
   console.log(user);
   done(null, user);
@@ -44,52 +44,23 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-var users = function() {
-	this.init();
-}
-users.prototype.loadFromDb = function(cb) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		connection.query( 'select * from users',  function(err, rows){
-			t.allUsers = rows;
-			t.isLoaded = true;
-		});
-	 	connection.release();
-	});
-};
-users.prototype.init = function() {
-	
-	this.loadFromDb();
-};
-users.prototype.createUser = function(profile,cb) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		var sql = "insert into users (`Key`,`Name`) VALUES ('"+profile.id+"','"+profile.username+"')";
-		console.log(sql);
-		connection.query( sql,  function(err, rows){
-			console.log('efter sparning',err,rows);
-			t.loadFromDb();
-		});
-	 	connection.release();
-	});	
-}
-users.prototype.findOrCreate = function (profile,cb,err) {
-	var foundUser;
-	for(var i=0;i<this.allUsers.length;i++)
-	{
-		var cuser = this.allUsers[i];
-		if (profile.id==cuser.Key)
-			foundUser = cuser;
-	}
-	if (!foundUser)
-	{
-		this.createUser(profile,cb);
-	}
-	cb();
-};
 
 var routes = function () {
 	
+}
+
+function generateSql(obj)
+{
+	var keys = [];
+	var values = [];
+	var update = [];
+	for(var k in obj)
+	{
+		keys.push(k);
+		values.push(obj[k]);
+		update.push(k+' = '+obj[k]);
+	}
+	return {keys:'`'+keys.join('`,`')+'`',values:"'"+values.join("','")+"'",update:update};
 }
 
 routes.prototype.init = function() {};
@@ -106,7 +77,15 @@ routes.prototype.saveRoute = function(routedata) {
 	});		
 };
 
-var User = new users();
+
+
+var postList = {
+	'route/add':function(res,data) {
+
+	}
+};
+
+var User = new Users(pool);
 var Route = new routes();
 
 app.post('/api/route/add',function(req,res) {
