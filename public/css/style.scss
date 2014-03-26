@@ -27,6 +27,8 @@ body {
 	font-size: 14px; 
 	font-family: 'robotothin', serif;
 	background: #ffa274;
+	overflow-x: hidden;
+	color: #2f2f2f;
 	&.start {
 		background: url(../img/start.jpg) center center no-repeat;
 		background-size: auto 100%;
@@ -132,15 +134,15 @@ img {
 	top: 0;
 	bottom: 0;
 	height: 100%;
-	perspective: 1500px;
+	//perspective: 1500px;
 	-webkit-perspective: 1500px;
-    perspective-origin: 100% 50%;
+    //perspective-origin: 100% 50%;
 	-webkit-perspective-origin: 100% 50%;
-	transform-style: preserve-3d;
+	//transform-style: preserve-3d;
 	-webkit-transform-style: preserve-3d;
-	transform: translate3d(-100%, 0, 0) rotateY(90deg);
+	//transform: translate3d(-100%, 0, 0) rotateY(90deg);
 	-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
-	transition: all 0.5s ease;
+	//transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	
 	ul {
@@ -161,12 +163,12 @@ img {
 }
 #map {
 	width: 100%;
-	height: 150px;
+	height: 30%;
 }
 #wrapper {
-	transition: all 0.5s ease;
+	//transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
-	transform: translate3d(0, 0, 0);
+	//transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
 }
 .menubtn {
@@ -195,4 +197,155 @@ body.menuopen {
 }
 .statisticsicon {
 	background: url(../img/statistic-icon.png) center 10px no-repeat;	
+}
+.addicon {
+	background: url(../img/add-icon.png) center 10px no-repeat;	
+}
+.view {
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: opacity 0.5s ease;
+	z-index: -1;
+	position: absolute;
+	&.show {
+		visibility: visible;
+		opacity: 1;
+		position: static;
+		z-index: 1;
+	}
+}
+
+.msgprofile {
+	.info {
+		height: 20%;
+	}
+	.chat {
+		height: 40%;
+		background: #e6e6e6;
+		overflow: auto;
+		position: relative;
+		padding: 10px 10px 30px 10px;
+		-webkit-box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.15);
+		input[type=button] {
+			background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
+			float: right;
+			border-radius: 20px;
+			height: 40px;
+			width: 40px;
+			-webkit-apperance: none;
+			border: 0;
+			display: block;
+		}
+	}
+	.sendrow {
+		position: absolute;
+		width: 100%;
+		bottom: 10px;
+		left: 0;
+	}
+}
+.pad {
+	padding: 10px 20px;
+}
+
+input[type=text], input[type=date],input[type=time] {
+	padding: 10px;
+	border-radius: 5px;
+	background: #FFF;
+	-webkit-apperance: none;
+	border: 0;
+	&:focus {
+		outline: none;
+	}
+}
+label {
+	font-family: 'robotobold', serif;
+	display: block;
+	font-size: 16px;
+}
+.submit {
+	background: #439ad5;
+	border-radius: 5px;
+	padding: 10px;
+	display: inline-block;
+	color: #FFF;
+	&.disabled {
+		opacity: 0.5;
+	}
+}
+
+/*Menubutton*/
+button#menubtn{
+  display:inline-block;
+  margin: 0 1em;
+  border:none;
+  background:none;
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  left: 10px;
+  &:focus {
+	outline: none;
+  }
+  span{
+    display:block;
+  }
+}
+
+$color : #3e444d;
+$transition: .3s;// increase this to see the transformations happen in slow motion
+
+// ==================================== grid button ====================================//
+
+$base : 0.8rem;
+$space : $base/4;
+
+//common to both grid buttons
+.grid-button {
+  padding: $base*2;
+  cursor: pointer;
+  user-select: none;
+}
+//common to both grid buttons
+.grid-button{
+  .grid{
+    width: $base;
+    height: $base;
+    background: $color;
+    color: $color; /* Not in use when the colors are specified below */
+    transition: $transition;
+  }
+}
+.grid-button.close{
+  .grid{
+    -webkit-transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
+            transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
+  }
+}
+//grid rearrange only
+.grid-button.rearrange {
+  .grid{
+    box-shadow:
+      -($base+$space) 0 -($base+$space),
+      0 0 -($base+$space),
+      ($base+$space) (-($base + $space)),
+      -($base+$space) 0,
+      $base+$space 0,
+      -($base+$space) ($base + $space),
+      0 ($base+$space),
+      ($base+$space) ($base + $space);
+  }
+}
+.grid-button.rearrange.close { 
+  .grid{
+      box-shadow:
+        0 0 -$base,
+        0 0 -$base*2,
+        $base 0,
+        -$base*2 0,
+        $base*2 0,
+        -$base 0,
+        0 $base*2,
+        0 $base;
+  }
 }

@@ -10,25 +10,31 @@
 	<div id="menu">
 		<ul>
 			<li><a class="searchicon">Sök</a></li>
-			<li><a class="profileicon">Profil</a></li>
-			<li><a class="travelicon">Resor</a></li>
+			<li><a class="addicon" data-view="add">Ny resa</a></li>
+			<li><a class="profileicon" data-view="profile">Profil</a></li>
+			<li><a class="travelicon" data-view="routelist">Resor</a></li>
 			<li><a class="statisticsicon">Statistik</a></li>
 		</ul>
 	</div>
 	<div id="wrapper">
-		<div class="menubtn"></div>
+		<!-- <div class="menubtn"></div> -->
+		<button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
+		  <span class="grid"></span>
+		</button>
 		<section>
 			<div id="map" style="width:100%;"></div>
 		</section>
-		<section>
-			<div>
+		<section class="view msgprofile show">
+			<div class="info">
 				<b>USERS</b>
 				<div id="users"></div>
 			</div>
-			<div>
+			<div class="chat">
 				<div id="conversation">meddelanden</div>
-				<input id="data" />
-				<input type="button" id="datasend" value="send" />
+				<div class="sendrow">
+					<input id="data" type="text" />
+					<input type="button" id="datasend" value="" />
+				</div>
 			</div>
 		</section>
 		<section class="view profile">
@@ -36,15 +42,25 @@
 			<img id="profilepic" alt="profilbild" />
 			<a href="/logout">Logga ut</a>
 		</section>
-		<section class="view add">
-			<label for="from">Från:</label>
-			<input id="from" />
-			<label for="to">Till:</label>
-			<input id="to" />
-			<label for="to">Åker:</label>
-			<input id="startdate" type="date" />
-			<input id="starttime" type="time" />
-			<span class="button disabled" id="addroute">Lägg till</span>
+		<section class="view add pad">
+			<div>
+				<label for="from">Från:</label>
+				<input id="from" type="text" />
+			</div>
+			<div>
+				<label for="to">Till:</label>
+				<input id="to" type="text" />
+			</div>
+			<div>
+				<label for="to">Åker:</label>
+				<input id="startdate" type="date" />
+				<input id="starttime" type="time" />
+				
+			</div>
+			<div>
+				<span class="button disabled submit" id="addroute">Lägg till</span>
+			</div>
+			
 		</section>
 		<section class="view routelist">
 			<ul id="routelist">
@@ -267,17 +283,25 @@
 			}
 		});
 		
-		$('.menubtn').click(function() {
+		$('#menubtn').click(function() {
+			$(this).toggleClass('close');
 			$('body').toggleClass('menuopen');
 		});
-
+		
+		$('#menu a').click(function() {
+			$('.view').removeClass('show');
+			var view = $(this).attr('data-view');
+			console.log(this,view);
+			$('.'+view).addClass('show');
+		});
+		
 	}
 	google.load("jquery", "1.4.2");
 	google.load("maps", "3.x", {other_params: "sensor=false", callback:initialize});
 	document.getElementById('userdata').innerHTML = userdata.displayName;
 	document.getElementById('profilepic').src = 'https://graph.facebook.com/'+userdata.username+'/picture';
 
-
+	
 	
 	
 </script>

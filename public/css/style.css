@@ -21,29 +21,31 @@ body {
   font-size: 14px;
   font-family: 'robotothin', serif;
   background: #ffa274;
+  overflow-x: hidden;
+  color: #2f2f2f;
 }
-/* line 30, style.scss */
+/* line 32, style.scss */
 body.start {
   background: url(../img/start.jpg) center center no-repeat;
   background-size: auto 100%;
 }
 
-/* line 35, style.scss */
+/* line 37, style.scss */
 .bold {
   font-family: 'robotobold', serif;
 }
 
-/* line 38, style.scss */
+/* line 40, style.scss */
 a {
   text-decoration: none;
 }
 
-/* line 41, style.scss */
+/* line 43, style.scss */
 img {
   max-width: 100%;
 }
 
-/* line 44, style.scss */
+/* line 46, style.scss */
 .startlogo {
   width: 90px;
   margin: 0 auto;
@@ -51,13 +53,13 @@ img {
   margin-top: 40px;
 }
 
-/* line 50, style.scss */
+/* line 52, style.scss */
 .logotext {
   width: 80%;
   margin: 10px auto 30px auto;
 }
 
-/* line 54, style.scss */
+/* line 56, style.scss */
 .startbtn {
   width: 240px;
   height: 50px;
@@ -65,7 +67,7 @@ img {
   display: block;
   color: #FFF;
 }
-/* line 60, style.scss */
+/* line 62, style.scss */
 .startbtn .icon {
   height: 50px;
   width: 50px;
@@ -75,7 +77,7 @@ img {
   display: block;
   float: left;
 }
-/* line 69, style.scss */
+/* line 71, style.scss */
 .startbtn .btntext {
   line-height: 50px;
   width: 178px;
@@ -84,64 +86,64 @@ img {
   text-align: right;
   float: left;
 }
-/* line 77, style.scss */
+/* line 79, style.scss */
 .startbtn.fb {
   background-color: #2980b9;
   border-bottom: 1px solid #1f6daa;
 }
-/* line 80, style.scss */
+/* line 82, style.scss */
 .startbtn.fb .icon {
   background-image: url(../img/fb-icon.png);
   border-right: 1px solid #1f6daa;
 }
-/* line 84, style.scss */
+/* line 86, style.scss */
 .startbtn.fb .btntext {
   border-left: 1px solid #2980b9;
 }
-/* line 88, style.scss */
+/* line 90, style.scss */
 .startbtn.twitter {
   background-color: #3498db;
   border-bottom: 1px solid #237fcf;
 }
-/* line 91, style.scss */
+/* line 93, style.scss */
 .startbtn.twitter .icon {
   background-image: url(../img/twitter-icon.png);
   border-right: 1px solid #237fcf;
 }
-/* line 95, style.scss */
+/* line 97, style.scss */
 .startbtn.twitter .btntext {
   border-left: 1px solid #51ace3;
 }
-/* line 99, style.scss */
+/* line 101, style.scss */
 .startbtn.google {
   background-color: #e74c3c;
   border-bottom: 1px solid #e34334;
 }
-/* line 102, style.scss */
+/* line 104, style.scss */
 .startbtn.google .icon {
   background-image: url(../img/gplus-icon.png);
   border-right: 1px solid #e34334;
 }
-/* line 106, style.scss */
+/* line 108, style.scss */
 .startbtn.google .btntext {
   border-left: 1px solid #ec6959;
 }
-/* line 110, style.scss */
+/* line 112, style.scss */
 .startbtn.register {
   background-color: #29b94b;
   border-bottom: 1px solid #21ad3e;
 }
-/* line 113, style.scss */
+/* line 115, style.scss */
 .startbtn.register .icon {
   background-image: url(../img/key.png);
   border-right: 1px solid #21ad3e;
 }
-/* line 117, style.scss */
+/* line 119, style.scss */
 .startbtn.register .btntext {
   border-left: 1px solid #43c766;
 }
 
-/* line 122, style.scss */
+/* line 124, style.scss */
 .ortxt {
   width: 100%;
   text-align: center;
@@ -149,7 +151,7 @@ img {
   color: #FFF;
 }
 
-/* line 128, style.scss */
+/* line 130, style.scss */
 #menu {
   position: fixed;
   width: 75px;
@@ -157,24 +159,19 @@ img {
   top: 0;
   bottom: 0;
   height: 100%;
-  perspective: 1500px;
   -webkit-perspective: 1500px;
-  perspective-origin: 100% 50%;
   -webkit-perspective-origin: 100% 50%;
-  transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transform: translate3d(-100%, 0, 0) rotateY(90deg);
   -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
-  transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 }
-/* line 146, style.scss */
+/* line 148, style.scss */
 #menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 151, style.scss */
+/* line 153, style.scss */
 #menu a {
   display: block;
   font-size: 12px;
@@ -185,21 +182,19 @@ img {
   text-align: center;
 }
 
-/* line 162, style.scss */
+/* line 164, style.scss */
 #map {
   width: 100%;
-  height: 150px;
+  height: 30%;
 }
 
-/* line 166, style.scss */
+/* line 168, style.scss */
 #wrapper {
-  transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
-  transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* line 172, style.scss */
+/* line 174, style.scss */
 .menubtn {
   width: 50px;
   height: 50px;
@@ -208,31 +203,176 @@ img {
   background: url(../img/menu-btn.png) center center no-repeat;
 }
 
-/* line 180, style.scss */
+/* line 182, style.scss */
 body.menuopen #wrapper {
   -webkit-transform: translate3d(75px, 0, 0);
 }
-/* line 183, style.scss */
+/* line 185, style.scss */
 body.menuopen #menu {
   -webkit-transform: translate3d(0, 0, 0) rotateY(0deg);
 }
 
-/* line 187, style.scss */
+/* line 189, style.scss */
 .searchicon {
   background: url(../img/search-icon.png) center 10px no-repeat;
 }
 
-/* line 190, style.scss */
+/* line 192, style.scss */
 .profileicon {
   background: url(../img/profile-icon.png) center 10px no-repeat;
 }
 
-/* line 193, style.scss */
+/* line 195, style.scss */
 .travelicon {
   background: url(../img/travel-icon.png) center 10px no-repeat;
 }
 
-/* line 196, style.scss */
+/* line 198, style.scss */
 .statisticsicon {
   background: url(../img/statistic-icon.png) center 10px no-repeat;
+}
+
+/* line 201, style.scss */
+.addicon {
+  background: url(../img/add-icon.png) center 10px no-repeat;
+}
+
+/* line 204, style.scss */
+.view {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  z-index: -1;
+  position: absolute;
+}
+/* line 210, style.scss */
+.view.show {
+  visibility: visible;
+  opacity: 1;
+  position: static;
+  z-index: 1;
+}
+
+/* line 219, style.scss */
+.msgprofile .info {
+  height: 20%;
+}
+/* line 222, style.scss */
+.msgprofile .chat {
+  height: 40%;
+  background: #e6e6e6;
+  overflow: auto;
+  position: relative;
+  padding: 10px 10px 30px 10px;
+  -webkit-box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
+}
+/* line 229, style.scss */
+.msgprofile .chat input[type=button] {
+  background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
+  float: right;
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  -webkit-apperance: none;
+  border: 0;
+  display: block;
+}
+/* line 240, style.scss */
+.msgprofile .sendrow {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+}
+
+/* line 247, style.scss */
+.pad {
+  padding: 10px 20px;
+}
+
+/* line 251, style.scss */
+input[type=text], input[type=date], input[type=time] {
+  padding: 10px;
+  border-radius: 5px;
+  background: #FFF;
+  -webkit-apperance: none;
+  border: 0;
+}
+/* line 257, style.scss */
+input[type=text]:focus, input[type=date]:focus, input[type=time]:focus {
+  outline: none;
+}
+
+/* line 261, style.scss */
+label {
+  font-family: 'robotobold', serif;
+  display: block;
+  font-size: 16px;
+}
+
+/* line 266, style.scss */
+.submit {
+  background: #439ad5;
+  border-radius: 5px;
+  padding: 10px;
+  display: inline-block;
+  color: #FFF;
+}
+/* line 272, style.scss */
+.submit.disabled {
+  opacity: 0.5;
+}
+
+/*Menubutton*/
+/* line 278, style.scss */
+button#menubtn {
+  display: inline-block;
+  margin: 0 1em;
+  border: none;
+  background: none;
+  position: absolute;
+  z-index: 100;
+  top: 10px;
+  left: 10px;
+}
+/* line 287, style.scss */
+button#menubtn:focus {
+  outline: none;
+}
+/* line 290, style.scss */
+button#menubtn span {
+  display: block;
+}
+
+/* line 304, style.scss */
+.grid-button {
+  padding: 1.6rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* line 311, style.scss */
+.grid-button .grid {
+  width: 0.8rem;
+  height: 0.8rem;
+  background: #3e444d;
+  color: #3e444d;
+  /* Not in use when the colors are specified below */
+  transition: 0.3s;
+}
+
+/* line 320, style.scss */
+.grid-button.close .grid {
+  -webkit-transform: rotate3d(0, 0, 1, -45deg) scale3d(0.8, 0.8, 0.8);
+  transform: rotate3d(0, 0, 1, -45deg) scale3d(0.8, 0.8, 0.8);
+}
+
+/* line 327, style.scss */
+.grid-button.rearrange .grid {
+  box-shadow: -1rem -1rem, 0 -1rem, 1rem -1rem, -1rem 0, 1rem 0, -1rem 1rem, 0 1rem, 1rem 1rem;
+}
+
+/* line 340, style.scss */
+.grid-button.rearrange.close .grid {
+  box-shadow: 0 -0.8rem, 0 -1.6rem, 0.8rem 0, -1.6rem 0, 1.6rem 0, -0.8rem 0, 0 1.6rem, 0 0.8rem;
 }
