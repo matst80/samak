@@ -1,14 +1,20 @@
-var http = require('http');
-var url  = require('url');
-var express  = require('express');
 
+var url  = require('url');
+var passport = require('passport');
+var express  = require('express');
 var gm = require('googlemaps');
 var util = require('util');
 var fs = require('fs');
 var app = express();
-var passport = require('passport');
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
+
 var mysql =  require('mysql');
-var FacebookStrategy = require('passport-facebook').Strategy;
+var RestServer =  require('./restserver.js');
+var Users = require('./users.js');
+var auth = require('./auth.js');
+var Routes = require('./routes.js');
+
 
 var pool =  mysql.createPool({
 	host : 'localhost',
@@ -17,8 +23,7 @@ var pool =  mysql.createPool({
   	password: 'bananer'
   });	
 
-var FACEBOOK_APP_ID = '136862019768932';
-var FACEBOOK_APP_SECRET = '0946637710c380df58d81760e2a6f248';
+
 
 
 app.configure(function() {
@@ -31,137 +36,92 @@ app.configure(function() {
   app.use(app.router);
 });
 
-var user = {};
 
-passport.serializeUser(function(user, done) {
-  console.log(user);
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  console.log(user);
-  done(null, user);
-});
-
-
-var users = function() {
-	this.init();
-}
-users.prototype.loadFromDb = function(cb) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		connection.query( 'select * from users',  function(err, rows){
-			t.allUsers = rows;
-			t.isLoaded = true;
-		});
-	 	connection.release();
-	});
-};
-users.prototype.init = function() {
-	
-	this.loadFromDb();
-};
-users.prototype.createUser = function(profile,cb) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		var sql = "insert into users (`Key`,`Name`) VALUES ('"+profile.id+"','"+profile.username+"')";
-		console.log(sql);
-		connection.query( sql,  function(err, rows){
-			console.log('efter sparning',err,rows);
-			t.loadFromDb();
-		});
-	 	connection.release();
-	});	
-}
-users.prototype.findOrCreate = function (profile,cb,err) {
-	var foundUser;
-	for(var i=0;i<this.allUsers.length;i++)
-	{
-		var cuser = this.allUsers[i];
-		if (profile.id==cuser.Key)
-			foundUser = cuser;
-	}
-	if (!foundUser)
-	{
-		this.createUser(profile,cb);
-	}
-	cb();
-};
-
-var routes = function () {
-	
-}
-
-routes.prototype.init = function() {};
-routes.prototype.saveRoute = function(routedata) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		var sql = "insert into routes (`Start`,`End`,`StartTime`,`Title`) VALUES ('"+routedata.start+"','"+routedata.end+"','"+routedata.time+"','"+routedata.title+"')";
-		console.log(sql);
-		connection.query( sql,  function(err, rows){
-			console.log('efter sparning',err,rows);
-			
-		});
-	 	connection.release();
-	});		
-};
-
-var User = new users();
-var Route = new routes();
-
-app.post('/api/route/add',function(req,res) {
-	res.header("Content-Type", "text/javascript");
-
-	var saveData = {
-		start:'test',
-		end:''
-	};
-	Route.saveRoute(saveData);
-	res.send(JSON.stringify(saveData));	
-});
-
-app.get('/api/routes',function(req,res) {
-	pool.getConnection(function(err, connection){
-		res.header("Content-Type", "text/javascript");
-		connection.query( 'select * from routes',  function(err, rows){
-		  	if(err)	{
-		  		throw err;
-		  	}else{
-		  		console.log( rows );
-				res.send(JSON.stringify(rows));		  		
-		  	}
-		  });
-		  
-		  connection.release();
-	});
-});
-
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-app.get('/auth/facebook',
-  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
-);
 app.get('/userdata.js',function(req, res) {
   res.header("Content-Type", "text/javascript");
   res.send('var userdata = '+JSON.stringify(req.user));
 });
-app.get('/auth/facebook/callback', 
-
-passport.authenticate('facebook', { successRedirect: '/loggedin.htm', failureRedirect: '/login' }));
 
 
-passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://samak.foo.com/auth/facebook/callback"
-  },
-  function(accessToken, refreshToken, profile, done) {
-	console.log(arguments);
-	User.findOrCreate(profile,function() {
-		console.log('saved');
-	});
-	done(null,profile);
-  }
-));
 
-app.listen(80);
+
+var postList = {
+	'route/add':function(res,data) {
+		console.log(data);
+		route.saveRoute(data);
+		res.send({ok:true});
+	}
+};
+
+var getList = {
+	'routes':function(res,data) {
+		route.getRoutes(function(data) {
+			res.send(data);
+		});
+	}
+};
+
+var user = new Users(pool);
+var route = new Routes(pool);
+//console.log('här',auth);
+auth(app,user);
+
+var usernames = {};
+
+io.sockets.on('connection', function (socket) {
+  
+    
+    
+  socket.on('pos', function (data) {
+    console.log(data);
+  });
+
+    // when the client emits 'sendchat', this listens and executes
+  socket.on('sendchat', function (data) {
+    // we tell the client to execute 'updatechat' with 2 parameters
+    io.sockets.emit('updatechat', socket.username, data);
+  });
+
+    // when the client emits 'adduser', this listens and executes
+  socket.on('adduser', function(username){
+    // we store the username in the socket session for this client
+    console.log('adduser',username);
+    socket.username = username;
+    // add the client's username to the global list
+    usernames[username] = username;
+    // echo to client they've connected
+    socket.emit('updatechat', 'SERVER', 'you have connected');
+    // echo globally (all clients) that a person has connected
+    socket.broadcast.emit('updatechat', 'SERVER', username + ' has connected');
+    // update the list of users in chat, client-side
+    io.sockets.emit('updateusers', usernames);
+  });
+
+  // when the user disconnects.. perform this
+  socket.on('disconnect', function(){
+    // remove the username from global usernames list
+    delete usernames[socket.username];
+    // update list of users in chat, client-side
+    io.sockets.emit('updateusers', usernames);
+    // echo globally that this client has left
+    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
+
+  });
+});
+
+var restServer = new RestServer('/api',app);
+
+restServer.generateGet(getList);
+restServer.generatePost(postList);
+
+app.get('/',function(req,res) {
+	if (req.user)
+		res.sendfile('./public/loggedin.htm');
+	else
+		res.sendfile('./public/index.htm');
+});
+
+
+
+server.listen(80);
+
