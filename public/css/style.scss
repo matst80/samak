@@ -24,7 +24,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	font-size: 13px;
+	font-size: 14px; 
 	font-family: 'robotothin', serif;
 	&.start {
 		background: url(../img/start.jpg) center center no-repeat;
@@ -56,12 +56,12 @@ img {
 	margin: 10px auto;
 	display: block;
 	color: #FFF;
-	font-size: 12px;
 	.icon {
 		height: 50px;
 		width: 50px;
 		background-position: center center;
 		background-repeat: no-repeat;
+		background-size: auto 50%; 
 		display: block;
 		float: left;
 	}
@@ -110,7 +110,7 @@ img {
 		background-color: #29b94b;
 		border-bottom: 1px solid #21ad3e;
 		.icon {
-			background-image: url(../img/gplus-icon.png);
+			background-image: url(../img/key.png);
 			border-right: 1px solid #21ad3e;
 		}
 		.btntext {
@@ -121,7 +121,6 @@ img {
 .ortxt {
 	width: 100%;
 	text-align: center;
-	font-size: 12px;
 	margin: 20px auto;
 	color: #FFF;
 }
