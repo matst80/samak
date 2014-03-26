@@ -112,7 +112,6 @@
 		var directionsDisplay = new google.maps.DirectionsRenderer();
 
 		$.getJSON('/api/routes',function(d) {
-			console.log(d,d.length);
 			for(var i=0;i<d.length;i++)
 			{
 				var r = d[i];
@@ -190,7 +189,7 @@
 				console.log(route);
 				$.post('/api/route/add',route,function(d) {
 					console.log(d);
-				});
+				},'json');
 			}
 		}
 
