@@ -67,7 +67,7 @@ module.exports = function(app,user) {
 		realm: baseUrl+'/'
 	},
 	  function(identifier, profile, done) {
-	    console.log(profile);
+	    console.log(arguments);
 	    user.findOrCreate(profile,function() {
 			console.log('saved');
 		});
