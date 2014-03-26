@@ -59,9 +59,7 @@
 	}
 	
 	var now = new Date();
-	$.get('/api/routes',function(d) {
-		console.log(d);
-	});
+
 
 	function initialize()
 	{
@@ -69,11 +67,23 @@
 		var addbutton = document.getElementById('addroute');
 		var from = document.getElementById('from');
 		var to = document.getElementById('to');
+		var routes = document.getElementById('routelist');
 		var startdate = document.getElementById('startdate');
 		var starttime = document.getElementById('starttime');
 
 		var directionsService = new google.maps.DirectionsService();
-		var directionsDisplay = new google.maps.DirectionsRenderer()
+		var directionsDisplay = new google.maps.DirectionsRenderer();
+
+		$.get('/api/routes',function(d) {
+			console.log(d,d.length);
+			for(var i=0;i<d.length;i++)
+			{
+				var r = d[i];
+				var li = document.createElement('li');
+				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span>';
+				routes.appendChild(li);
+			}
+		});
 		
 		function updatePos(lng,lat)
 		{
