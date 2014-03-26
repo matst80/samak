@@ -26,6 +26,7 @@ body {
 	padding: 0;
 	font-size: 14px; 
 	font-family: 'robotothin', serif;
+	background: #ffa274;
 	&.start {
 		background: url(../img/start.jpg) center center no-repeat;
 		background-size: auto 100%;
@@ -123,4 +124,75 @@ img {
 	text-align: center;
 	margin: 20px auto;
 	color: #FFF;
+}
+#menu { 
+	position: fixed;
+	width: 75px;
+	background: #3e444d;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	perspective: 1500px;
+	-webkit-perspective: 1500px;
+    perspective-origin: 100% 50%;
+	-webkit-perspective-origin: 100% 50%;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform: translate3d(-100%, 0, 0) rotateY(90deg);
+	-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+	a {
+		display: block;
+		//height: 60px;
+		font-size: 12px;
+		padding-top: 50px;
+		margin-bottom: 10px;
+		width: 100%;
+		color: #FFF;
+		text-align: center;
+	}
+}
+#map {
+	width: 100%;
+	height: 150px;
+}
+#wrapper {
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+}
+.menubtn {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	z-index: 50;
+	background: url(../img/menu-btn.png) center center no-repeat;
+}
+body.menuopen {
+	#wrapper {
+		 -webkit-transform: translate3d(75px, 0, 0);
+	}
+	#menu {
+		-webkit-transform: translate3d(0, 0, 0) rotateY(0deg);		
+	}
+}
+.searchicon {
+	background: url(../img/search-icon.png) center 10px no-repeat;	
+}
+.profileicon {
+	background: url(../img/profile-icon.png) center 10px no-repeat;	
+}
+.travelicon {
+	background: url(../img/travel-icon.png) center 10px no-repeat;	
+}
+.statisticsicon {
+	background: url(../img/statistic-icon.png) center 10px no-repeat;	
 }

@@ -20,29 +20,30 @@ body {
   padding: 0;
   font-size: 14px;
   font-family: 'robotothin', serif;
+  background: #ffa274;
 }
-/* line 29, style.scss */
+/* line 30, style.scss */
 body.start {
   background: url(../img/start.jpg) center center no-repeat;
   background-size: auto 100%;
 }
 
-/* line 34, style.scss */
+/* line 35, style.scss */
 .bold {
   font-family: 'robotobold', serif;
 }
 
-/* line 37, style.scss */
+/* line 38, style.scss */
 a {
   text-decoration: none;
 }
 
-/* line 40, style.scss */
+/* line 41, style.scss */
 img {
   max-width: 100%;
 }
 
-/* line 43, style.scss */
+/* line 44, style.scss */
 .startlogo {
   width: 90px;
   margin: 0 auto;
@@ -50,13 +51,13 @@ img {
   margin-top: 40px;
 }
 
-/* line 49, style.scss */
+/* line 50, style.scss */
 .logotext {
   width: 80%;
   margin: 10px auto 30px auto;
 }
 
-/* line 53, style.scss */
+/* line 54, style.scss */
 .startbtn {
   width: 240px;
   height: 50px;
@@ -64,7 +65,7 @@ img {
   display: block;
   color: #FFF;
 }
-/* line 59, style.scss */
+/* line 60, style.scss */
 .startbtn .icon {
   height: 50px;
   width: 50px;
@@ -74,7 +75,7 @@ img {
   display: block;
   float: left;
 }
-/* line 68, style.scss */
+/* line 69, style.scss */
 .startbtn .btntext {
   line-height: 50px;
   width: 178px;
@@ -83,67 +84,155 @@ img {
   text-align: right;
   float: left;
 }
-/* line 76, style.scss */
+/* line 77, style.scss */
 .startbtn.fb {
   background-color: #2980b9;
   border-bottom: 1px solid #1f6daa;
 }
-/* line 79, style.scss */
+/* line 80, style.scss */
 .startbtn.fb .icon {
   background-image: url(../img/fb-icon.png);
   border-right: 1px solid #1f6daa;
 }
-/* line 83, style.scss */
+/* line 84, style.scss */
 .startbtn.fb .btntext {
   border-left: 1px solid #2980b9;
 }
-/* line 87, style.scss */
+/* line 88, style.scss */
 .startbtn.twitter {
   background-color: #3498db;
   border-bottom: 1px solid #237fcf;
 }
-/* line 90, style.scss */
+/* line 91, style.scss */
 .startbtn.twitter .icon {
   background-image: url(../img/twitter-icon.png);
   border-right: 1px solid #237fcf;
 }
-/* line 94, style.scss */
+/* line 95, style.scss */
 .startbtn.twitter .btntext {
   border-left: 1px solid #51ace3;
 }
-/* line 98, style.scss */
+/* line 99, style.scss */
 .startbtn.google {
   background-color: #e74c3c;
   border-bottom: 1px solid #e34334;
 }
-/* line 101, style.scss */
+/* line 102, style.scss */
 .startbtn.google .icon {
   background-image: url(../img/gplus-icon.png);
   border-right: 1px solid #e34334;
 }
-/* line 105, style.scss */
+/* line 106, style.scss */
 .startbtn.google .btntext {
   border-left: 1px solid #ec6959;
 }
-/* line 109, style.scss */
+/* line 110, style.scss */
 .startbtn.register {
   background-color: #29b94b;
   border-bottom: 1px solid #21ad3e;
 }
-/* line 112, style.scss */
+/* line 113, style.scss */
 .startbtn.register .icon {
   background-image: url(../img/key.png);
   border-right: 1px solid #21ad3e;
 }
-/* line 116, style.scss */
+/* line 117, style.scss */
 .startbtn.register .btntext {
   border-left: 1px solid #43c766;
 }
 
-/* line 121, style.scss */
+/* line 122, style.scss */
 .ortxt {
   width: 100%;
   text-align: center;
   margin: 20px auto;
   color: #FFF;
+}
+
+/* line 128, style.scss */
+#menu {
+  position: fixed;
+  width: 75px;
+  background: #3e444d;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  perspective: 1500px;
+  -webkit-perspective: 1500px;
+  perspective-origin: 100% 50%;
+  -webkit-perspective-origin: 100% 50%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform: translate3d(-100%, 0, 0) rotateY(90deg);
+  -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+/* line 146, style.scss */
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 151, style.scss */
+#menu a {
+  display: block;
+  font-size: 12px;
+  padding-top: 50px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #FFF;
+  text-align: center;
+}
+
+/* line 162, style.scss */
+#map {
+  width: 100%;
+  height: 150px;
+}
+
+/* line 166, style.scss */
+#wrapper {
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* line 172, style.scss */
+.menubtn {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 50;
+  background: url(../img/menu-btn.png) center center no-repeat;
+}
+
+/* line 180, style.scss */
+body.menuopen #wrapper {
+  -webkit-transform: translate3d(75px, 0, 0);
+}
+/* line 183, style.scss */
+body.menuopen #menu {
+  -webkit-transform: translate3d(0, 0, 0) rotateY(0deg);
+}
+
+/* line 187, style.scss */
+.searchicon {
+  background: url(../img/search-icon.png) center 10px no-repeat;
+}
+
+/* line 190, style.scss */
+.profileicon {
+  background: url(../img/profile-icon.png) center 10px no-repeat;
+}
+
+/* line 193, style.scss */
+.travelicon {
+  background: url(../img/travel-icon.png) center 10px no-repeat;
+}
+
+/* line 196, style.scss */
+.statisticsicon {
+  background: url(../img/statistic-icon.png) center 10px no-repeat;
 }

@@ -7,39 +7,50 @@
 
 </head>
 <body>
-	<section>
-		<div id="map" style="width:100%;height:100%"></div>
-	</section>
-	<section>
-		<div>
-			<b>USERS</b>
-			<div id="users"></div>
-		</div>
-		<div>
-			<div id="conversation">meddelanden</div>
-			<input id="data" />
-			<input type="button" id="datasend" value="send" />
-		</div>
-	</section>
-	<section class="view profile">
-		<div id="userdata">laddar...</div>
-		<img id="profilepic" alt="profilbild" />
-		<a href="/logout">Logga ut</a>
-	</section>
-	<section class="view add">
-		<label for="from">Från:</label>
-		<input id="from" />
-		<label for="to">Till:</label>
-		<input id="to" />
-		<label for="to">Åker:</label>
-		<input id="startdate" type="date" />
-		<input id="starttime" type="time" />
-		<span class="button disabled" id="addroute">Lägg till</span>
-	</section>
-	<section class="view routelist">
-		<ul id="routelist">
+	<div id="menu">
+		<ul>
+			<li><a class="searchicon">Sök</a></li>
+			<li><a class="profileicon">Profil</a></li>
+			<li><a class="travelicon">Resor</a></li>
+			<li><a class="statisticsicon">Statistik</a></li>
 		</ul>
-	</section>
+	</div>
+	<div id="wrapper">
+		<div class="menubtn"></div>
+		<section>
+			<div id="map" style="width:100%;"></div>
+		</section>
+		<section>
+			<div>
+				<b>USERS</b>
+				<div id="users"></div>
+			</div>
+			<div>
+				<div id="conversation">meddelanden</div>
+				<input id="data" />
+				<input type="button" id="datasend" value="send" />
+			</div>
+		</section>
+		<section class="view profile">
+			<div id="userdata">laddar...</div>
+			<img id="profilepic" alt="profilbild" />
+			<a href="/logout">Logga ut</a>
+		</section>
+		<section class="view add">
+			<label for="from">Från:</label>
+			<input id="from" />
+			<label for="to">Till:</label>
+			<input id="to" />
+			<label for="to">Åker:</label>
+			<input id="startdate" type="date" />
+			<input id="starttime" type="time" />
+			<span class="button disabled" id="addroute">Lägg till</span>
+		</section>
+		<section class="view routelist">
+			<ul id="routelist">
+			</ul>
+		</section>
+	</div>
 <script>
 
 	var mapStyle = [
@@ -254,6 +265,10 @@
 				$(this).blur();
 				$('#datasend').focus().click();
 			}
+		});
+		
+		$('.menubtn').click(function() {
+			$('body').toggleClass('menuopen');
 		});
 
 	}
