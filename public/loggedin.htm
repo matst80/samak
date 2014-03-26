@@ -29,6 +29,30 @@
 </section>
 <script>
 
+var mapStyle = [
+  {
+    "featureType": "landscape",
+    "stylers": [
+      { "saturation": -53 },
+      { "lightness": 12 },
+      { "hue": "#5eff00" },
+      { "weight": 0.1 },
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "poi",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#3c9471" }
+    ]
+  }
+];
+
 
 	Date.prototype.toSqlString = function() {
 		var d1=this;
@@ -97,12 +121,22 @@
         	});
 		}
 		var currentRoute = {};
+		
+		var styledMap = new google.maps.StyledMapType(mapStyle, {name: "Styled Map"});
+
 		var mapOptions = {
-          center: new google.maps.LatLng(60.604819,15.6656285),
-          zoom: 12
+        	center: new google.maps.LatLng(60.604819,15.6656285),
+        	mapTypeControlOptions: {
+      			mapTypeIds: [google.maps.MapTypeId.ROADMAP,google.maps.MapTypeId.SATELLITE,google.maps.MapTypeId.HYBRID, 'map_style']
+			},
+        	zoom: 12
         };
         
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+ 		map.mapTypes.set('map_style', styledMap);
+  		map.setMapTypeId('map_style');
+
 		directionsDisplay.setMap(map);
 
 		function calcRoute() {
