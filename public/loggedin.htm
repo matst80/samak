@@ -3,7 +3,6 @@
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="userdata.js"></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1-beta1.js"></script>
 </head>
 <body>
 	<section>
@@ -173,7 +172,7 @@
     	}
 
 	}
-
+	google.load("jquery", "1.4.2");
 	google.load("maps", "3.x", {other_params: "sensor=false", callback:initialize});
 	document.getElementById('userdata').innerHTML = userdata.displayName;
 	document.getElementById('profilepic').src = 'https://graph.facebook.com/'+userdata.username+'/picture';
