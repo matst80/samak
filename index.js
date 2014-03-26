@@ -17,12 +17,11 @@ var Routes = require('./routes.js');
 
 
 var pool =  mysql.createPool({
-	host : 'localhost',
-  	user : 'root',
-  	database:'samak',
-  	password: 'bananer'
-  });	
-
+  host : 'localhost',
+  user : 'root',
+  database:'samak',
+  password: 'bananer'
+});	
 
 
 
@@ -46,6 +45,9 @@ app.get('/userdata.js',function(req, res) {
 
 
 var postList = {
+  'user':function(res,data) {
+    res.send(data);
+  },
 	'route/add':function(res,data) {
 		console.log(data);
 		route.saveRoute(data);
@@ -54,6 +56,12 @@ var postList = {
 };
 
 var getList = {
+  'user':function(res,data,req) {
+    res.send(req.user);
+  },
+  'users':function(res) {
+    res.send(user.allUsers);
+  },
 	'routes':function(res,data) {
 		route.getRoutes(function(data) {
 			res.send(data);
