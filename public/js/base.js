@@ -67,6 +67,19 @@
 	function initialize()
 	{
 
+		$('.changeview').click(function() {
+			$('section').removeClass('active');
+			var newview = $(this).attr('data-view');
+			console.log('changeto',newview)
+			$('section.'+newview).addClass('active');
+		});
+
+
+
+		$('.menubtn').click(function() {
+			$('body').toggleClass('menuopen');
+		});	
+
 		var addbutton = document.getElementById('addroute');
 		var from = document.getElementById('from');
 		var to = document.getElementById('to');
@@ -225,6 +238,7 @@
 	}
 	google.load("jquery", "1.4.2");
 	google.load("maps", "3.x", {other_params: "sensor=false", callback:initialize});
+
 	document.getElementById('userdata').innerHTML = userdata.displayName;
 	document.getElementById('profilepic').src = 'https://graph.facebook.com/'+userdata.username+'/picture';
 

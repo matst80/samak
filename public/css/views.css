@@ -1,0 +1,31 @@
+#wrapper {
+	position: absolute;
+	height:100%;
+}
+
+.map {
+	z-index: 1;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom:0;
+	top:0;
+}
+
+section.view
+{
+	z-index: 2;
+	transition: all 0.5s ease;
+	-webkit-transition: all 0.5s ease;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom:-100%;
+}
+
+#wrapper > section.active {
+	z-index: 3;
+	bottom:0;
+	opacity: 1;
+}
