@@ -10,6 +10,7 @@ var passport = require('passport');
 var mysql =  require('mysql');
 var RestServer =  require('./restserver.js');
 var Users = require('./users.js');
+var Routes = require('./routes.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 var pool =  mysql.createPool({
@@ -44,11 +45,6 @@ passport.deserializeUser(function(user, done) {
 });
 
 
-
-var routes = function () {
-	
-}
-
 function generateSql(obj)
 {
 	var keys = [];
@@ -63,56 +59,35 @@ function generateSql(obj)
 	return {keys:'`'+keys.join('`,`')+'`',values:"'"+values.join("','")+"'",update:update};
 }
 
-routes.prototype.init = function() {};
-routes.prototype.saveRoute = function(routedata) {
-	var t = this;
-	pool.getConnection(function(err, connection){
-		var sql = "insert into routes (`Start`,`End`,`StartTime`,`Title`) VALUES ('"+routedata.start+"','"+routedata.end+"','"+routedata.time+"','"+routedata.title+"')";
-		console.log(sql);
-		connection.query( sql,  function(err, rows){
-			console.log('efter sparning',err,rows);
-			
-		});
-	 	connection.release();
-	});		
-};
-
-
 
 var postList = {
 	'route/add':function(res,data) {
-
+		route.saveRoute(data);
+		res.send({ok:true});
 	}
 };
 
-var User = new Users(pool);
-var Route = new routes();
+var getList = {
+	'routes':function(res,data) {
+		route.getRoutes(function(data) {
+			res.send(data);
+		});
+	}
+};
 
-app.post('/api/route/add',function(req,res) {
-	res.header("Content-Type", "text/javascript");
+var user = new Users(pool);
+var route = new Routes(pool);
 
-	var saveData = {
-		start:'test',
-		end:''
-	};
-	Route.saveRoute(saveData);
-	res.send(JSON.stringify(saveData));	
-});
+var restServer = new RestServer('/api',app);
 
-app.get('/api/routes',function(req,res) {
-	pool.getConnection(function(err, connection){
-		res.header("Content-Type", "text/javascript");
-		connection.query( 'select * from routes',  function(err, rows){
-		  	if(err)	{
-		  		throw err;
-		  	}else{
-		  		console.log( rows );
-				res.send(JSON.stringify(rows));		  		
-		  	}
-		  });
-		  
-		  connection.release();
-	});
+restServer.generateGet(getList);
+restServer.generatePost(postList);
+
+app.get('/',function(req,res) {
+	if (req.user)
+		res.sendfile('./public/loggedin.htm');
+	else
+		res.sendfile('./public/index.htm');
 });
 
 app.get('/auth/facebook', passport.authenticate('facebook'));
@@ -124,9 +99,7 @@ app.get('/userdata.js',function(req, res) {
   res.header("Content-Type", "text/javascript");
   res.send('var userdata = '+JSON.stringify(req.user));
 });
-app.get('/auth/facebook/callback', 
-
-passport.authenticate('facebook', { successRedirect: '/loggedin.htm', failureRedirect: '/login' }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/loggedin.htm', failureRedirect: '/login' }));
 
 
 passport.use(new FacebookStrategy({
@@ -136,7 +109,7 @@ passport.use(new FacebookStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
 	console.log(arguments);
-	User.findOrCreate(profile,function() {
+	user.findOrCreate(profile,function() {
 		console.log('saved');
 	});
 	done(null,profile);
