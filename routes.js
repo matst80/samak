@@ -1,3 +1,5 @@
+var sql  = require('./sqlhelper.js');
+
 var routes = function (pool) {
 	this.pool = pool;
 	this.tbl = 'routes';
@@ -21,9 +23,11 @@ routes.prototype.getRoutes = function(cb) {
 };
 routes.prototype.saveRoute = function(routedata) {
 	var t = this;
+	var sqldata = sql.generateSql(routedata);
+	console.log(sqldata);
 	this.pool.getConnection(function(err, connection){
-		var sql = "insert into "+t.tbl+" (`Start`,`End`,`StartTime`,`Title`) VALUES ('"+routedata.start+"','"+routedata.end+"','"+routedata.time+"','"+routedata.title+"')";
-		
+		var sql = "insert into "+t.tbl+" ("+sqldata.keys+") VALUES ("+sqldata.values+")";
+		console.log(sql);
 		connection.query( sql,  function(err, rows){
 			console.log('efter sparning',err,rows);
 			

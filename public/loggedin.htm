@@ -1,7 +1,9 @@
 <html>
 <head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script src="userdata.js"></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1-beta1.js"></script>
 </head>
 <body>
 	<section>
@@ -11,20 +13,64 @@
 	<div id="userdata">laddar...</div>
 	<img id="profilepic" alt="profilbild" />
 </section>
-<section class="view search">
-	<label for="from">Från</label>
+<section class="view add">
+	<label for="from">Från:</label>
 	<input id="from" />
-	<label for="to">Till</label>
+	<label for="to">Till:</label>
 	<input id="to" />
+	<label for="to">Åker:</label>
+	<input id="startdate" type="date" />
+	<input id="starttime" type="time" />
 	<span class="button disabled" id="addroute">Lägg till</span>
 </section>
+<section class="view routelist">
+	<ul id="routelist">
+	</ul>
+</section>
 <script>
+
+
+	Date.prototype.toSqlString = function() {
+		var d1=this;
+
+        var curr_year = d1.getFullYear();
+
+        var curr_month = d1.getMonth() + 1; //Months are zero based
+        if (curr_month < 10)
+            curr_month = "0" + curr_month;
+
+        var curr_date = d1.getDate();
+        if (curr_date < 10)
+            curr_date = "0" + curr_date;
+
+        var curr_hour = d1.getHours();
+        if (curr_hour < 10)
+            curr_hour = "0" + curr_hour;
+
+        var curr_min = d1.getMinutes();
+        if (curr_min < 10)
+            curr_min = "0" + curr_min;
+
+        var curr_sec = d1.getSeconds();     
+        if (curr_sec < 10)
+            curr_sec = "0" + curr_sec;
+
+        return curr_year + "-" + curr_month + "-" + curr_date + " " + curr_hour + ":" + curr_min + ":" + curr_sec;
+	}
+	
+	var now = new Date();
+	$.get('/api/routes',function(d) {
+		console.log(d);
+	});
+
 	function initialize()
 	{
 
 		var addbutton = document.getElementById('addroute');
 		var from = document.getElementById('from');
 		var to = document.getElementById('to');
+		var startdate = document.getElementById('startdate');
+		var starttime = document.getElementById('starttime');
 
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer()
@@ -70,7 +116,24 @@
 
 		function addRoute()
 		{
-			console.log(currentRoute);
+			
+			var l = currentRoute.legs[0];
+			console.log(l);
+			var route = {
+				distance: l.distance.value,
+				duration: l.duration.value,
+				starttime: now.toSqlString(),
+				end: l.end_address,
+				start: l.start_address,
+				startlat: l.start_location.lat(),
+				startlng: l.start_location.lng(),
+				endlat: l.end_location.lat(),
+				endlng: l.end_location.lng(),
+			};
+			console.log(route);
+			$.post('/api/route/add',route,function(d) {
+				console.log(d);
+			});
 		}
 
 		document.getElementById('to').addEventListener('change',calcRoute,false);
