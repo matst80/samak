@@ -74,7 +74,7 @@
 		var directionsService = new google.maps.DirectionsService();
 		var directionsDisplay = new google.maps.DirectionsRenderer();
 
-		$.get('/api/routes',function(d) {
+		$.getJSON('/api/routes',function(d) {
 			console.log(d,d.length);
 			for(var i=0;i<d.length;i++)
 			{
