@@ -54,12 +54,26 @@ img {
 }
 
 /* line 52, style.scss */
+#logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background: url(../img/logo.png) center center no-repeat;
+  background-size: auto 100%;
+  z-index: 90;
+}
+
+/* line 64, style.scss */
 .logotext {
   width: 80%;
   margin: 10px auto 30px auto;
 }
 
-/* line 56, style.scss */
+/* line 68, style.scss */
 .startbtn {
   width: 240px;
   height: 50px;
@@ -67,7 +81,7 @@ img {
   display: block;
   color: #FFF;
 }
-/* line 62, style.scss */
+/* line 74, style.scss */
 .startbtn .icon {
   height: 50px;
   width: 50px;
@@ -77,7 +91,7 @@ img {
   display: block;
   float: left;
 }
-/* line 71, style.scss */
+/* line 83, style.scss */
 .startbtn .btntext {
   line-height: 50px;
   width: 178px;
@@ -86,64 +100,64 @@ img {
   text-align: right;
   float: left;
 }
-/* line 79, style.scss */
+/* line 91, style.scss */
 .startbtn.fb {
   background-color: #2980b9;
   border-bottom: 1px solid #1f6daa;
 }
-/* line 82, style.scss */
+/* line 94, style.scss */
 .startbtn.fb .icon {
   background-image: url(../img/fb-icon.png);
   border-right: 1px solid #1f6daa;
 }
-/* line 86, style.scss */
+/* line 98, style.scss */
 .startbtn.fb .btntext {
   border-left: 1px solid #2980b9;
 }
-/* line 90, style.scss */
+/* line 102, style.scss */
 .startbtn.twitter {
   background-color: #3498db;
   border-bottom: 1px solid #237fcf;
 }
-/* line 93, style.scss */
+/* line 105, style.scss */
 .startbtn.twitter .icon {
   background-image: url(../img/twitter-icon.png);
   border-right: 1px solid #237fcf;
 }
-/* line 97, style.scss */
+/* line 109, style.scss */
 .startbtn.twitter .btntext {
   border-left: 1px solid #51ace3;
 }
-/* line 101, style.scss */
+/* line 113, style.scss */
 .startbtn.google {
   background-color: #e74c3c;
   border-bottom: 1px solid #e34334;
 }
-/* line 104, style.scss */
+/* line 116, style.scss */
 .startbtn.google .icon {
   background-image: url(../img/gplus-icon.png);
   border-right: 1px solid #e34334;
 }
-/* line 108, style.scss */
+/* line 120, style.scss */
 .startbtn.google .btntext {
   border-left: 1px solid #ec6959;
 }
-/* line 112, style.scss */
+/* line 124, style.scss */
 .startbtn.register {
   background-color: #29b94b;
   border-bottom: 1px solid #21ad3e;
 }
-/* line 115, style.scss */
+/* line 127, style.scss */
 .startbtn.register .icon {
   background-image: url(../img/key.png);
   border-right: 1px solid #21ad3e;
 }
-/* line 119, style.scss */
+/* line 131, style.scss */
 .startbtn.register .btntext {
   border-left: 1px solid #43c766;
 }
 
-/* line 124, style.scss */
+/* line 136, style.scss */
 .ortxt {
   width: 100%;
   text-align: center;
@@ -151,7 +165,21 @@ img {
   color: #FFF;
 }
 
-/* line 130, style.scss */
+/* line 142, style.scss */
+.menuwrap {
+  perspective: 1500px;
+  perspective-origin: 0% 50%;
+  position: relative;
+  left: 0;
+  -webkit-transition: all 0.5s ease;
+}
+
+/* line 149, style.scss */
+.pusher {
+  transform-style: preserve-3d;
+}
+
+/* line 152, style.scss */
 #menu {
   position: fixed;
   width: 75px;
@@ -159,19 +187,18 @@ img {
   top: 0;
   bottom: 0;
   height: 100%;
-  -webkit-perspective: 1500px;
-  -webkit-perspective-origin: 100% 50%;
-  -webkit-transform-style: preserve-3d;
   -webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
+  -webkit-transform-origin: 100% 50%;
+  -webkit-transform-style: preserve-3d;
   -webkit-transition: all 0.5s ease;
 }
-/* line 148, style.scss */
+/* line 164, style.scss */
 #menu ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-/* line 153, style.scss */
+/* line 169, style.scss */
 #menu a {
   display: block;
   font-size: 12px;
@@ -182,19 +209,19 @@ img {
   text-align: center;
 }
 
-/* line 164, style.scss */
+/* line 180, style.scss */
 #map {
   width: 100%;
   height: 30%;
 }
 
-/* line 168, style.scss */
+/* line 184, style.scss */
 #wrapper {
   -webkit-transition: all 0.5s ease;
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* line 174, style.scss */
+/* line 190, style.scss */
 .menubtn {
   width: 50px;
   height: 50px;
@@ -203,61 +230,104 @@ img {
   background: url(../img/menu-btn.png) center center no-repeat;
 }
 
-/* line 182, style.scss */
+/* line 198, style.scss */
 body.menuopen #wrapper {
   -webkit-transform: translate3d(75px, 0, 0);
 }
-/* line 185, style.scss */
+/* line 201, style.scss */
 body.menuopen #menu {
   -webkit-transform: translate3d(0, 0, 0) rotateY(0deg);
 }
+/* line 204, style.scss */
+body.menuopen .menuwrap {
+  -webkit-transform: translate3d(75px, 0, 0);
+}
+/* line 207, style.scss */
+body.menuopen .pusher {
+  transform: translate3d(75px, 0, 0);
+}
 
-/* line 189, style.scss */
+/* line 211, style.scss */
 .searchicon {
   background: url(../img/search-icon.png) center 10px no-repeat;
 }
 
-/* line 192, style.scss */
+/* line 214, style.scss */
 .profileicon {
   background: url(../img/profile-icon.png) center 10px no-repeat;
 }
 
-/* line 195, style.scss */
+/* line 217, style.scss */
 .travelicon {
   background: url(../img/travel-icon.png) center 10px no-repeat;
 }
 
-/* line 198, style.scss */
+/* line 220, style.scss */
 .statisticsicon {
   background: url(../img/statistic-icon.png) center 10px no-repeat;
 }
 
-/* line 201, style.scss */
+/* line 223, style.scss */
 .addicon {
   background: url(../img/add-icon.png) center 10px no-repeat;
 }
 
-/* line 204, style.scss */
+/* line 226, style.scss */
 .view {
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 0.5s ease;
+  -webkit-transition: all 0.3s ease;
   z-index: -1;
   position: absolute;
+  -webkit-transform: translate3d(100%, 0, 0);
 }
-/* line 210, style.scss */
+/* line 233, style.scss */
 .view.show {
   visibility: visible;
   opacity: 1;
   position: static;
   z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* line 219, style.scss */
+/* line 241, style.scss */
+.profileimg {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border: 5px solid #FFF;
+  border-radius: 35px;
+}
+
+/* line 248, style.scss */
+.setposition {
+  width: 30px;
+  height: 30px;
+  background: url(../img/position.png) center center no-repeat;
+}
+
+/* line 254, style.scss */
 .msgprofile .info {
   height: 20%;
+  position: relative;
 }
-/* line 222, style.scss */
+/* line 258, style.scss */
+.msgprofile .profileimg {
+  top: -35px;
+  left: 20px;
+  position: absolute;
+}
+/* line 263, style.scss */
+.msgprofile #users {
+  position: absolute;
+  top: -30px;
+  color: #FFF;
+  left: 105px;
+  font-family: 'robotobold',serif;
+  font-size: 18px;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+/* line 272, style.scss */
 .msgprofile .chat {
   height: 40%;
   background: #e6e6e6;
@@ -266,7 +336,7 @@ body.menuopen #menu {
   padding: 10px 10px 30px 10px;
   -webkit-box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
 }
-/* line 229, style.scss */
+/* line 279, style.scss */
 .msgprofile .chat input[type=button] {
   background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
   float: right;
@@ -277,7 +347,14 @@ body.menuopen #menu {
   border: 0;
   display: block;
 }
-/* line 240, style.scss */
+/* line 289, style.scss */
+.msgprofile .chat .setposition {
+  float: left;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+/* line 296, style.scss */
 .msgprofile .sendrow {
   position: absolute;
   width: 100%;
@@ -285,12 +362,17 @@ body.menuopen #menu {
   left: 0;
 }
 
-/* line 247, style.scss */
+/* line 303, style.scss */
 .pad {
   padding: 10px 20px;
 }
 
-/* line 251, style.scss */
+/* line 306, style.scss */
+.padtop {
+  padding-top: 70px;
+}
+
+/* line 310, style.scss */
 input[type=text], input[type=date], input[type=time] {
   padding: 10px;
   border-radius: 5px;
@@ -298,19 +380,19 @@ input[type=text], input[type=date], input[type=time] {
   -webkit-apperance: none;
   border: 0;
 }
-/* line 257, style.scss */
+/* line 316, style.scss */
 input[type=text]:focus, input[type=date]:focus, input[type=time]:focus {
   outline: none;
 }
 
-/* line 261, style.scss */
+/* line 320, style.scss */
 label {
   font-family: 'robotobold', serif;
   display: block;
   font-size: 16px;
 }
 
-/* line 266, style.scss */
+/* line 325, style.scss */
 .submit {
   background: #439ad5;
   border-radius: 5px;
@@ -318,61 +400,116 @@ label {
   display: inline-block;
   color: #FFF;
 }
-/* line 272, style.scss */
+/* line 331, style.scss */
 .submit.disabled {
   opacity: 0.5;
 }
 
 /*Menubutton*/
-/* line 278, style.scss */
+/* line 337, style.scss */
 button#menubtn {
   display: inline-block;
-  margin: 0 1em;
+  margin: 0 0.8em;
   border: none;
   background: none;
   position: absolute;
   z-index: 100;
-  top: 10px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
 }
-/* line 287, style.scss */
+/* line 346, style.scss */
 button#menubtn:focus {
   outline: none;
 }
-/* line 290, style.scss */
+/* line 349, style.scss */
 button#menubtn span {
   display: block;
 }
 
-/* line 304, style.scss */
-.grid-button {
-  padding: 1.6rem;
+/* line 413, style.scss */
+.lines-button {
+  padding: 1.5rem 0.75rem;
+  transition: .3s;
   cursor: pointer;
   user-select: none;
+  border-radius: 0.42857rem;
+  /* */
+}
+/* line 420, style.scss */
+.lines-button:hover {
+  opacity: 1;
+}
+/* line 423, style.scss */
+.lines-button:active {
+  transition: 0;
 }
 
-/* line 311, style.scss */
-.grid-button .grid {
-  width: 0.8rem;
-  height: 0.8rem;
+/* line 437, style.scss */
+.lines {
+  display: inline-block;
+  width: 3rem;
+  height: 0.42857rem;
   background: #3e444d;
-  color: #3e444d;
-  /* Not in use when the colors are specified below */
+  border-radius: 0.21429rem;
   transition: 0.3s;
+  position: relative;
+}
+/* line 441, style.scss */
+.lines:before, .lines:after {
+  display: inline-block;
+  width: 3rem;
+  height: 0.42857rem;
+  background: #3e444d;
+  border-radius: 0.21429rem;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  content: '';
+  -webkit-transform-origin: 0.21429rem center;
+  transform-origin: 0.21429rem center;
+}
+/* line 449, style.scss */
+.lines:before {
+  top: 0.75rem;
+}
+/* line 452, style.scss */
+.lines:after {
+  top: -0.75rem;
 }
 
-/* line 320, style.scss */
-.grid-button.close .grid {
-  -webkit-transform: rotate3d(0, 0, 1, -45deg) scale3d(0.8, 0.8, 0.8);
-  transform: rotate3d(0, 0, 1, -45deg) scale3d(0.8, 0.8, 0.8);
+/* line 460, style.scss */
+.lines-button:hover .lines:before {
+  top: 0.85714rem;
+}
+/* line 463, style.scss */
+.lines-button:hover .lines:after {
+  top: -0.85714rem;
 }
 
-/* line 327, style.scss */
-.grid-button.rearrange .grid {
-  box-shadow: -1rem -1rem, 0 -1rem, 1rem -1rem, -1rem 0, 1rem 0, -1rem 1rem, 0 1rem, 1rem 1rem;
+/* line 468, style.scss */
+.lines-button.close {
+  -webkit-transform: scale3d(0.8, 0.8, 0.8);
+  transform: scale3d(0.8, 0.8, 0.8);
 }
 
-/* line 340, style.scss */
-.grid-button.rearrange.close .grid {
-  box-shadow: 0 -0.8rem, 0 -1.6rem, 0.8rem 0, -1.6rem 0, 1.6rem 0, -0.8rem 0, 0 1.6rem, 0 0.8rem;
+/* line 474, style.scss */
+.lines-button.x.close .lines {
+  background: transparent;
+}
+/* line 476, style.scss */
+.lines-button.x.close .lines:before, .lines-button.x.close .lines:after {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  top: 0;
+  width: 3rem;
+}
+/* line 482, style.scss */
+.lines-button.x.close .lines:before {
+  -webkit-transform: rotate3d(0, 0, 1, 45deg);
+  transform: rotate3d(0, 0, 1, 45deg);
+}
+/* line 486, style.scss */
+.lines-button.x.close .lines:after {
+  -webkit-transform: rotate3d(0, 0, 1, -45deg);
+  transform: rotate3d(0, 0, 1, -45deg);
 }

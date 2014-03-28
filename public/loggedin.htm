@@ -7,42 +7,52 @@
 
 </head>
 <body>
-	<div id="menu">
-		<ul>
-			<li><a class="searchicon">Sök</a></li>
-			<li><a class="addicon" data-view="add">Ny resa</a></li>
-			<li><a class="profileicon" data-view="profile">Profil</a></li>
-			<li><a class="travelicon" data-view="routelist">Resor</a></li>
-			<li><a class="statisticsicon">Statistik</a></li>
-		</ul>
+	<div id="menuwrap">
+		<div class="pusher">
+			<div id="menu">
+				<ul>
+					<li><a class="searchicon">Sök</a></li>
+					<li><a class="addicon" data-view="add">Ny resa</a></li>
+					<li><a class="profileicon" data-view="profile">Profil</a></li>
+					<li><a class="travelicon" data-view="routelist">Resor</a></li>
+					<li><a class="statisticsicon">Statistik</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div id="wrapper">
 		<!-- <div class="menubtn"></div> -->
-		<button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
+		<!-- <button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
 		  <span class="grid"></span>
+		</button> -->
+		<button id="menubtn" class="lines-button x" type="button" role="button" aria-label="Toggle Navigation">
+		  <span class="lines"></span>
 		</button>
-		<section>
-			<div id="map" style="width:100%;"></div>
-		</section>
+		<div id="logo"></div>
 		<section class="view msgprofile show">
+			<section>
+				<div id="map" style="width:100%;"></div>
+			</section>
 			<div class="info">
 				<b>USERS</b>
+				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
 				<div id="users"></div>
 			</div>
 			<div class="chat">
 				<div id="conversation">meddelanden</div>
 				<div class="sendrow">
-					<input id="data" type="text" />
+					<div class="setposition"></div>
+					<input id="data" type="text" placeholder="Skriv meddelande..." />
 					<input type="button" id="datasend" value="" />
 				</div>
 			</div>
 		</section>
-		<section class="view profile">
+		<section class="view profile padtop">
 			<div id="userdata">laddar...</div>
 			<img id="profilepic" alt="profilbild" />
 			<a href="/logout">Logga ut</a>
 		</section>
-		<section class="view add pad">
+		<section class="view add pad padtop">
 			<div>
 				<label for="from">Från:</label>
 				<input id="from" type="text" />
@@ -62,7 +72,7 @@
 			</div>
 			
 		</section>
-		<section class="view routelist">
+		<section class="view routelist padtop">
 			<ul id="routelist">
 			</ul>
 		</section>
