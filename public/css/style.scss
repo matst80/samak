@@ -49,6 +49,18 @@ img {
 	display: block;
 	margin-top: 40px;
 }
+#logo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	top: 10px;
+	right: 10px;
+	width: 50px;
+	height: 50px;
+	background: url(../img/logo.png) center center no-repeat;
+	background-size: auto 100%;
+	z-index: 90;
+}
 .logotext {
 	width: 80%;
 	margin: 10px auto 30px auto;
@@ -127,6 +139,16 @@ img {
 	margin: 20px auto;
 	color: #FFF;
 }
+.menuwrap {
+	perspective: 1500px;
+    perspective-origin: 0% 50%;
+	position: relative;
+	left: 0;
+	-webkit-transition: all 0.5s ease;
+}
+.pusher {
+	transform-style: preserve-3d;
+}
 #menu { 
 	position: fixed;
 	width: 75px;
@@ -134,15 +156,9 @@ img {
 	top: 0;
 	bottom: 0;
 	height: 100%;
-	//perspective: 1500px;
-	-webkit-perspective: 1500px;
-    //perspective-origin: 100% 50%;
-	-webkit-perspective-origin: 100% 50%;
-	//transform-style: preserve-3d;
-	-webkit-transform-style: preserve-3d;
-	//transform: translate3d(-100%, 0, 0) rotateY(90deg);
 	-webkit-transform: translate3d(-100%, 0, 0) rotateY(-90deg);
-	//transition: all 0.5s ease;
+    -webkit-transform-origin: 100% 50%;
+    -webkit-transform-style: preserve-3d;
 	-webkit-transition: all 0.5s ease;
 	
 	ul {
@@ -185,6 +201,12 @@ body.menuopen {
 	#menu {
 		-webkit-transform: translate3d(0, 0, 0) rotateY(0deg);		
 	}
+	.menuwrap {
+		-webkit-transform: translate3d(75px, 0, 0);
+	}
+	.pusher {
+		transform: translate3d(75px, 0, 0);
+	}
 }
 .searchicon {
 	background: url(../img/search-icon.png) center 10px no-repeat;	
@@ -204,20 +226,48 @@ body.menuopen {
 .view {
 	visibility: hidden;
 	opacity: 0;
-	-webkit-transition: opacity 0.5s ease;
+	-webkit-transition: all 0.3s ease;
 	z-index: -1;
 	position: absolute;
+	-webkit-transform: translate3d(100%, 0, 0);
 	&.show {
 		visibility: visible;
 		opacity: 1;
 		position: static;
 		z-index: 1;
+		-webkit-transform: translate3d(0, 0, 0);
 	}
 }
-
+.profileimg {
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	border: 5px solid #FFF;
+	border-radius: 35px;
+}
+.setposition {
+	width: 30px;
+	height: 30px;
+	background: url(../img/position.png) center center no-repeat;
+}
 .msgprofile {
 	.info {
 		height: 20%;
+		position: relative;
+	}
+	.profileimg {
+		top: -35px;
+		left: 20px;
+		position: absolute;
+	}
+	#users {
+		position: absolute;
+		top: -30px;
+		color:#FFF;
+		left: 105px;
+		font-family: 'robotobold',serif;
+		font-size: 18px;
+		text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 	}
 	.chat {
 		height: 40%;
@@ -236,6 +286,12 @@ body.menuopen {
 			border: 0;
 			display: block;
 		}
+		.setposition {
+			float: left;
+			margin-right: 20px;
+			margin-left: 10px;
+			margin-top: 5px;
+		}
 	}
 	.sendrow {
 		position: absolute;
@@ -246,6 +302,9 @@ body.menuopen {
 }
 .pad {
 	padding: 10px 20px;
+}
+.padtop {
+	padding-top: 70px;
 }
 
 input[type=text], input[type=date],input[type=time] {
@@ -277,13 +336,13 @@ label {
 /*Menubutton*/
 button#menubtn{
   display:inline-block;
-  margin: 0 1em;
+  margin: 0 0.8em;
   border:none;
   background:none;
   position: absolute;
   z-index: 100;
-  top: 10px;
-  left: 10px;
+  top: 0px;
+  left: 0px;
   &:focus {
 	outline: none;
   }
@@ -295,57 +354,138 @@ button#menubtn{
 $color : #3e444d;
 $transition: .3s;// increase this to see the transformations happen in slow motion
 
-// ==================================== grid button ====================================//
+// // ==================================== grid button ====================================//
 
-$base : 0.8rem;
-$space : $base/4;
+// $base : 0.8rem;
+// $space : $base/4;
 
-//common to both grid buttons
-.grid-button {
-  padding: $base*2;
+// //common to both grid buttons
+// .grid-button {
+  // padding: $base*2;
+  // cursor: pointer;
+  // user-select: none;
+// }
+// //common to both grid buttons
+// .grid-button{
+  // .grid{
+    // width: $base;
+    // height: $base;
+    // background: $color;
+    // color: $color; /* Not in use when the colors are specified below */
+    // transition: $transition;
+  // }
+// }
+// .grid-button.close{
+  // .grid{
+    // -webkit-transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
+            // transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
+  // }
+// }
+// //grid rearrange only
+// .grid-button.rearrange {
+  // .grid{
+    // box-shadow:
+      // -($base+$space) 0 -($base+$space),
+      // 0 0 -($base+$space),
+      // ($base+$space) (-($base + $space)),
+      // -($base+$space) 0,
+      // $base+$space 0,
+      // -($base+$space) ($base + $space),
+      // 0 ($base+$space),
+      // ($base+$space) ($base + $space);
+  // }
+// }
+// .grid-button.rearrange.close { 
+  // .grid{
+      // box-shadow:
+        // 0 0 -$base,
+        // 0 0 -$base*2,
+        // $base 0,
+        // -$base*2 0,
+        // $base*2 0,
+        // -$base 0,
+        // 0 $base*2,
+        // 0 $base;
+  // }
+// }
+$button-size : 3rem; 
+//common to all three-liners
+.lines-button {
+  padding: $button-size/2 $button-size/4;
+  transition: .3s;
   cursor: pointer;
   user-select: none;
-}
-//common to both grid buttons
-.grid-button{
-  .grid{
-    width: $base;
-    height: $base;
-    background: $color;
-    color: $color; /* Not in use when the colors are specified below */
-    transition: $transition;
+  border-radius: $button-size/7;
+/* */
+  &:hover {
+    opacity: 1;
+  }
+  &:active {
+    transition: 0;
   }
 }
-.grid-button.close{
-  .grid{
-    -webkit-transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
-            transform: rotate3d(0,0,1,-45deg)  scale3d(.8,.8,.8);
+//common to all three-liners
+@mixin line {
+  display: inline-block;
+  width: $button-size;
+  height: $button-size/7;
+  background: $color;
+  border-radius: $button-size/14; 
+  transition: $transition;
+}
+//common to all three-liners
+.lines {
+  @include line;
+  position: relative; 
+
+  &:before, &:after {
+   @include line;
+    position: absolute;
+    left:0;
+    content: '';
+    -webkit-transform-origin: $button-size/14 center;
+            transform-origin: $button-size/14 center;
+  }
+  &:before { 
+    top: $button-size/4; 
+  }
+  &:after { 
+    top: -$button-size/4; 
   }
 }
-//grid rearrange only
-.grid-button.rearrange {
-  .grid{
-    box-shadow:
-      -($base+$space) 0 -($base+$space),
-      0 0 -($base+$space),
-      ($base+$space) (-($base + $space)),
-      -($base+$space) 0,
-      $base+$space 0,
-      -($base+$space) ($base + $space),
-      0 ($base+$space),
-      ($base+$space) ($base + $space);
+
+//common to all three-liners
+.lines-button:hover {
+  .lines {
+    &:before { 
+      top: $button-size/3.5; 
+    }
+    &:after { 
+      top: -$button-size/3.5; 
+    }
   }
 }
-.grid-button.rearrange.close { 
-  .grid{
-      box-shadow:
-        0 0 -$base,
-        0 0 -$base*2,
-        $base 0,
-        -$base*2 0,
-        $base*2 0,
-        -$base 0,
-        0 $base*2,
-        0 $base;
+.lines-button.close {
+  -webkit-transform: scale3d(.8,.8,.8);
+          transform: scale3d(.8,.8,.8);
+}
+//three-lines to x
+.lines-button.x.close{
+  .lines {
+    background: transparent;
+    &:before, &:after{
+      -webkit-transform-origin: 50% 50%;
+              transform-origin: 50% 50%;
+      top:0;
+      width: $button-size;
+    }
+    &:before{
+      -webkit-transform: rotate3d(0,0,1,45deg); 
+              transform: rotate3d(0,0,1,45deg); 
+    }
+    &:after{
+      -webkit-transform: rotate3d(0,0,1,-45deg); 
+              transform: rotate3d(0,0,1,-45deg); 
+    }
   }
 }

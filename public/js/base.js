@@ -195,7 +195,7 @@
 		});
 
 		socket.on('updatechat', function (username, data) {
-			$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+			$('#conversation').append('<div class="msgitem"><div class="msguser"><span class="rating"></span><span class="username">'+username + ':</span></div><div class="bubble">' + data + '</div></div>');
 		});
 
 		socket.on('updateusers', function(data) {
