@@ -29,10 +29,10 @@
 		  <span class="lines"></span>
 		</button>
 		<div id="logo"></div>
-		<section class="view msgprofile show">
-			<section>
+		<section>
 				<div id="map" style="width:100%;"></div>
 			</section>
+		<section class="view msgprofile show">
 			<div class="info">
 				<b>USERS</b>
 				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
@@ -47,9 +47,17 @@
 				</div>
 			</div>
 		</section>
-		<section class="view profile padtop">
+		<section class="view profile pad padtop">
 			<div id="userdata">laddar...</div>
 			<img id="profilepic" alt="profilbild" />
+			<div class="carinfo">
+				<label>Co2-Utsläpp g/km</label>
+				<input type="text" id="co2" placeholder="Ex: 216" />
+				<label>Tillverkare</label>
+				<input type="text" id="carmaker" placeholder="Ex: Volvo" />
+				<label>Modell</label>
+				<input type="text" id="carmodel" placeholder="Ex: V70" />
+			</div>
 			<a href="/logout">Logga ut</a>
 		</section>
 		<section class="view add pad padtop">
@@ -72,7 +80,7 @@
 			</div>
 			
 		</section>
-		<section class="view routelist padtop">
+		<section class="view routelist">
 			<ul id="routelist">
 			</ul>
 		</section>

@@ -20,7 +20,7 @@ var pool =  mysql.createPool({
 	host : 'localhost',
   	user : 'root',
   	database:'samak',
-  	password: ''
+  	password: 'password'
   });	
 
 

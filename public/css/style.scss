@@ -20,7 +20,14 @@
     font-style: normal;
 
 }
-
+* {
+	box-sizing: border-box;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -186,6 +193,9 @@ img {
 	-webkit-transition: all 0.5s ease;
 	//transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
+	position: relative;
+	height: 100%;
+	
 }
 .menubtn {
 	width: 50px;
@@ -236,6 +246,20 @@ body.menuopen {
 		position: static;
 		z-index: 1;
 		-webkit-transform: translate3d(0, 0, 0);
+		&.profile {
+			position: absolute;
+			top: 0;
+			background: #ffa274;
+			width: 100%;
+			height: 100%;
+		}
+		&.routelist {
+			position: absolute;
+			height: 70%;
+			top: 30%;
+			overflow: auto;
+			width: 100%;
+		}
 	}
 }
 .profileimg {
@@ -300,6 +324,30 @@ body.menuopen {
 		left: 0;
 	}
 }
+.profile {
+	#userdata {
+		text-align: center;
+		color: #FFF;
+		font-family: 'robotobold', serif;
+		font-size: 18px;
+	}
+}
+
+#routelist {
+	background: #e6e6e6;
+	list-style-type: none;
+	padding: 20px;
+	
+	li {
+		padding: 10px 0 10px 20px;
+		background: url(../img/trip-arrow.png) left 13px no-repeat;
+		border-bottom: 1px solid #DDD;
+		span {
+			font-family: 'robotobold', serif;
+		}
+	}
+}
+
 .pad {
 	padding: 10px 20px;
 }
@@ -322,7 +370,7 @@ label {
 	display: block;
 	font-size: 16px;
 }
-.submit {
+.submit, .button {
 	background: #439ad5;
 	border-radius: 5px;
 	padding: 10px;
