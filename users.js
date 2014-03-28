@@ -9,6 +9,7 @@ var users = function(pool) {
 users.prototype.loadFromDb = function(cb) {
 	var t = this;
 	this.pool.getConnection(function(err, connection){
+		console.log(err,connection);
 		connection.query( 'select * from '+t.tbl,  function(err, rows){
 			t.allUsers = rows;
 			t.isLoaded = true;
