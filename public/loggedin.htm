@@ -51,31 +51,41 @@
 			<div id="userdata">laddar...</div>
 			<img id="profilepic" alt="profilbild" />
 			<div class="carinfo">
-				<label>Co2-Utsläpp g/km</label>
-				<input type="text" id="co2" placeholder="Ex: 216" />
-				<label>Tillverkare</label>
-				<input type="text" id="carmaker" placeholder="Ex: Volvo" />
-				<label>Modell</label>
-				<input type="text" id="carmodel" placeholder="Ex: V70" />
+				<div class="inprow">
+					<label>Co2-Utsläpp g/km</label>
+					<input type="number" id="co2" placeholder="Ex: 216" />
+				</div>
+				<div class="inprow">
+					<label>Tillverkare</label>
+					<input type="text" id="carmaker" placeholder="Ex: Volvo" />
+				</div>
+				<div class="inprow">
+					<label>Modell</label>
+					<input type="text" id="carmodel" placeholder="Ex: V70" />
+				</div>
 			</div>
 			<a href="/logout">Logga ut</a>
 		</section>
-		<section class="view add pad padtop">
-			<div>
+		<section class="view add pad">
+			<div class="inprow">
 				<label for="from">Från:</label>
 				<input id="from" type="text" />
 			</div>
-			<div>
+			<div class="inprow">
 				<label for="to">Till:</label>
 				<input id="to" type="text" />
 			</div>
-			<div>
+			<div class="inprow">
 				<label for="to">Åker:</label>
 				<input id="startdate" type="date" />
 				<input id="starttime" type="time" />
 				
 			</div>
-			<div>
+			<div class="inprow">
+				<label>Pris per medresande</label>
+				<input type="number" id="tripprice" class="priceinp">
+			</div>
+			<div class="inprow">
 				<span class="button disabled submit" id="addroute">Lägg till</span>
 			</div>
 			

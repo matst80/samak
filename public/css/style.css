@@ -321,8 +321,12 @@ body.menuopen .pusher {
   overflow: auto;
   width: 100%;
 }
+/* line 265, style.scss */
+.view.show.msgprofile {
+  height: 70%;
+}
 
-/* line 267, style.scss */
+/* line 270, style.scss */
 .profileimg {
   width: 60px;
   height: 60px;
@@ -331,53 +335,53 @@ body.menuopen .pusher {
   border-radius: 35px;
 }
 
-/* line 274, style.scss */
+/* line 277, style.scss */
 .setposition {
   width: 30px;
   height: 30px;
   background: url(../img/position.png) center center no-repeat;
 }
 
-/* line 279, style.scss */
+/* line 282, style.scss */
 .rating {
   height: 15px;
   width: 100%;
   display: inline-block;
   background: url(../img/rating.png) left center no-repeat;
 }
-/* line 284, style.scss */
+/* line 287, style.scss */
 .rating.onestar {
   background: url(../img/1-star.png) left center no-repeat;
 }
-/* line 287, style.scss */
+/* line 290, style.scss */
 .rating.twostar {
   background: url(../img/2-star.png) left center no-repeat;
 }
-/* line 290, style.scss */
+/* line 293, style.scss */
 .rating.threestar {
   background: url(../img/3-star.png) left center no-repeat;
 }
-/* line 293, style.scss */
+/* line 296, style.scss */
 .rating.fourstar {
   background: url(../img/4-star.png) left center no-repeat;
 }
-/* line 296, style.scss */
+/* line 299, style.scss */
 .rating.fivestar {
   background: url(../img/5-star.png) left center no-repeat;
 }
 
-/* line 301, style.scss */
+/* line 304, style.scss */
 .msgprofile .info {
-  height: 20%;
+  height: 30%;
   position: relative;
 }
-/* line 305, style.scss */
+/* line 308, style.scss */
 .msgprofile .profileimg {
   top: -35px;
   left: 20px;
   position: absolute;
 }
-/* line 310, style.scss */
+/* line 313, style.scss */
 .msgprofile #users {
   position: absolute;
   top: -30px;
@@ -387,16 +391,16 @@ body.menuopen .pusher {
   font-size: 18px;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
-/* line 319, style.scss */
+/* line 322, style.scss */
 .msgprofile .chat {
-  height: 40%;
+  height: 70%;
   background: #e6e6e6;
   overflow: hidden;
   position: relative;
   padding: 10px 10px 60px 10px;
   -webkit-box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
 }
-/* line 326, style.scss */
+/* line 329, style.scss */
 .msgprofile .chat input[type=button] {
   background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
   float: right;
@@ -407,18 +411,22 @@ body.menuopen .pusher {
   border: 0;
   display: block;
 }
-/* line 336, style.scss */
+/* line 338, style.scss */
+.msgprofile .chat input[type=button]:focus {
+  outline: none;
+}
+/* line 342, style.scss */
 .msgprofile .chat .setposition {
   float: left;
   margin-right: 20px;
   margin-left: 10px;
   margin-top: 5px;
 }
-/* line 342, style.scss */
+/* line 348, style.scss */
 .msgprofile .chat input[type=text] {
   width: 65%;
 }
-/* line 345, style.scss */
+/* line 351, style.scss */
 .msgprofile .chat .profileimg {
   position: static;
   float: left;
@@ -427,32 +435,32 @@ body.menuopen .pusher {
   width: 40px;
   border-width: 3px;
 }
-/* line 353, style.scss */
+/* line 359, style.scss */
 .msgprofile .chat .msgitem {
   margin-bottom: 10px;
   position: relative;
 }
-/* line 356, style.scss */
+/* line 362, style.scss */
 .msgprofile .chat .msgitem:after {
   content: "";
   display: block;
   clear: both;
   min-height: 1%;
 }
-/* line 363, style.scss */
+/* line 369, style.scss */
 .msgprofile .chat .rating {
   position: absolute;
   left: 50px;
   top: 0;
   width: 100px;
 }
-/* line 369, style.scss */
+/* line 375, style.scss */
 .msgprofile .chat .username {
   display: inline-block;
   margin-top: 20px;
   font-family: 'robotobold', serif;
 }
-/* line 374, style.scss */
+/* line 380, style.scss */
 .msgprofile .chat .bubble {
   position: relative;
   background: #fcea85;
@@ -463,7 +471,7 @@ body.menuopen .pusher {
   float: left;
   margin-left: 50px;
 }
-/* line 384, style.scss */
+/* line 390, style.scss */
 .msgprofile .chat .bubble:before {
   content: "";
   position: absolute;
@@ -475,40 +483,40 @@ body.menuopen .pusher {
   border-right: 10px solid #fcea85;
   border-bottom: 5px solid transparent;
 }
-/* line 396, style.scss */
+/* line 402, style.scss */
 .msgprofile .chat .msguser {
   width: 100%;
   height: 40px;
 }
-/* line 401, style.scss */
+/* line 407, style.scss */
 .msgprofile .chat .mine .bubble {
   float: right;
   margin-left: 0;
   margin-right: 50px;
   background: #FFF;
 }
-/* line 406, style.scss */
+/* line 412, style.scss */
 .msgprofile .chat .mine .bubble:before {
   right: auto;
   left: 100%;
   border-right: 0;
   border-left: 10px solid #FFF;
 }
-/* line 413, style.scss */
+/* line 419, style.scss */
 .msgprofile .chat .mine .rating {
   left: auto;
   right: 60px;
 }
-/* line 417, style.scss */
+/* line 423, style.scss */
 .msgprofile .chat .mine .profileimg {
   float: right;
 }
-/* line 420, style.scss */
+/* line 426, style.scss */
 .msgprofile .chat .mine .username {
   float: right;
   margin-right: 10px;
 }
-/* line 426, style.scss */
+/* line 432, style.scss */
 .msgprofile #conversation {
   overflow-y: auto;
   overflow-x: hidden;
@@ -516,7 +524,7 @@ body.menuopen .pusher {
   position: relative;
   height: 100%;
 }
-/* line 433, style.scss */
+/* line 439, style.scss */
 .msgprofile .sendrow {
   position: absolute;
   width: 100%;
@@ -524,7 +532,7 @@ body.menuopen .pusher {
   left: 0;
 }
 
-/* line 441, style.scss */
+/* line 447, style.scss */
 .profile #userdata {
   text-align: center;
   color: #FFF;
@@ -532,31 +540,31 @@ body.menuopen .pusher {
   font-size: 18px;
 }
 
-/* line 449, style.scss */
+/* line 455, style.scss */
 #routelist {
   background: #e6e6e6;
   list-style-type: none;
   padding: 20px;
 }
-/* line 454, style.scss */
+/* line 460, style.scss */
 #routelist li {
   padding: 10px 60px 10px 20px;
   background: url(../img/trip-arrow.png) left 13px no-repeat;
   border-bottom: 1px solid #DDD;
   position: relative;
 }
-/* line 459, style.scss */
+/* line 465, style.scss */
 #routelist li:after {
   content: "";
   display: block;
   clear: both;
   min-height: 1%;
 }
-/* line 465, style.scss */
+/* line 471, style.scss */
 #routelist li span {
   font-family: 'robotobold', serif;
 }
-/* line 468, style.scss */
+/* line 474, style.scss */
 #routelist li .profileimg {
   float: left;
   margin-right: 10px;
@@ -564,25 +572,25 @@ body.menuopen .pusher {
   height: 40px;
   border-width: 3px;
 }
-/* line 475, style.scss */
+/* line 481, style.scss */
 #routelist li .rating {
   position: absolute;
   left: 50px;
   top: 0;
   width: 100px;
 }
-/* line 481, style.scss */
+/* line 487, style.scss */
 #routelist li .username {
   display: inline-block;
   margin-top: 20px;
   font-family: 'robotobold', serif;
 }
-/* line 486, style.scss */
+/* line 492, style.scss */
 #routelist li .userinfo {
   position: relative;
   margin-top: 10px;
 }
-/* line 490, style.scss */
+/* line 496, style.scss */
 #routelist li .tripprice {
   position: absolute;
   width: 60px;
@@ -598,37 +606,46 @@ body.menuopen .pusher {
   font-size: 16px;
 }
 
-/* line 507, style.scss */
+/* line 513, style.scss */
 .pad {
   padding: 10px 20px;
 }
 
-/* line 510, style.scss */
+/* line 516, style.scss */
 .padtop {
   padding-top: 70px;
 }
 
-/* line 514, style.scss */
-input[type=text], input[type=date], input[type=time] {
+/* line 519, style.scss */
+.inprow {
+  padding: 5px 0;
+}
+
+/* line 522, style.scss */
+input[type=text], input[type=date], input[type=time], input[type=number] {
   padding: 10px;
   border-radius: 5px;
   background: #FFF;
   -webkit-apperance: none;
   border: 0;
 }
-/* line 520, style.scss */
-input[type=text]:focus, input[type=date]:focus, input[type=time]:focus {
+/* line 528, style.scss */
+input[type=text]:focus, input[type=date]:focus, input[type=time]:focus, input[type=number]:focus {
   outline: none;
 }
+/* line 531, style.scss */
+input[type=text].priceinp, input[type=date].priceinp, input[type=time].priceinp, input[type=number].priceinp {
+  background: white url(../img/kr.png) 90% center no-repeat;
+}
 
-/* line 524, style.scss */
+/* line 535, style.scss */
 label {
   font-family: 'robotobold', serif;
   display: block;
   font-size: 16px;
 }
 
-/* line 529, style.scss */
+/* line 540, style.scss */
 .submit, .button {
   background: #439ad5;
   border-radius: 5px;
@@ -636,13 +653,13 @@ label {
   display: inline-block;
   color: #FFF;
 }
-/* line 535, style.scss */
+/* line 546, style.scss */
 .submit.disabled, .button.disabled {
   opacity: 0.5;
 }
 
 /*Menubutton*/
-/* line 541, style.scss */
+/* line 552, style.scss */
 button#menubtn {
   display: inline-block;
   margin: 0 0.8em;
@@ -653,16 +670,16 @@ button#menubtn {
   top: 0px;
   left: 0px;
 }
-/* line 550, style.scss */
+/* line 561, style.scss */
 button#menubtn:focus {
   outline: none;
 }
-/* line 553, style.scss */
+/* line 564, style.scss */
 button#menubtn span {
   display: block;
 }
 
-/* line 617, style.scss */
+/* line 628, style.scss */
 .lines-button {
   padding: 1.5rem 0.75rem;
   transition: .3s;
@@ -671,16 +688,16 @@ button#menubtn span {
   border-radius: 0.42857rem;
   /* */
 }
-/* line 624, style.scss */
+/* line 635, style.scss */
 .lines-button:hover {
   opacity: 1;
 }
-/* line 627, style.scss */
+/* line 638, style.scss */
 .lines-button:active {
   transition: 0;
 }
 
-/* line 641, style.scss */
+/* line 652, style.scss */
 .lines {
   display: inline-block;
   width: 3rem;
@@ -690,7 +707,7 @@ button#menubtn span {
   transition: 0.3s;
   position: relative;
 }
-/* line 645, style.scss */
+/* line 656, style.scss */
 .lines:before, .lines:after {
   display: inline-block;
   width: 3rem;
@@ -704,47 +721,47 @@ button#menubtn span {
   -webkit-transform-origin: 0.21429rem center;
   transform-origin: 0.21429rem center;
 }
-/* line 653, style.scss */
+/* line 664, style.scss */
 .lines:before {
   top: 0.75rem;
 }
-/* line 656, style.scss */
+/* line 667, style.scss */
 .lines:after {
   top: -0.75rem;
 }
 
-/* line 664, style.scss */
+/* line 675, style.scss */
 .lines-button:hover .lines:before {
   top: 0.85714rem;
 }
-/* line 667, style.scss */
+/* line 678, style.scss */
 .lines-button:hover .lines:after {
   top: -0.85714rem;
 }
 
-/* line 672, style.scss */
+/* line 683, style.scss */
 .lines-button.close {
   -webkit-transform: scale3d(0.8, 0.8, 0.8);
   transform: scale3d(0.8, 0.8, 0.8);
 }
 
-/* line 678, style.scss */
+/* line 689, style.scss */
 .lines-button.x.close .lines {
   background: transparent;
 }
-/* line 680, style.scss */
+/* line 691, style.scss */
 .lines-button.x.close .lines:before, .lines-button.x.close .lines:after {
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   top: 0;
   width: 3rem;
 }
-/* line 686, style.scss */
+/* line 697, style.scss */
 .lines-button.x.close .lines:before {
   -webkit-transform: rotate3d(0, 0, 1, 45deg);
   transform: rotate3d(0, 0, 1, 45deg);
 }
-/* line 690, style.scss */
+/* line 701, style.scss */
 .lines-button.x.close .lines:after {
   -webkit-transform: rotate3d(0, 0, 1, -45deg);
   transform: rotate3d(0, 0, 1, -45deg);
