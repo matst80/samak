@@ -82,7 +82,7 @@
 			{
 				var r = d[i];
 				var li = document.createElement('li');
-				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span>';
+				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span><span class="tripprice">65kr</span><div class="userinfo"><img src="img/defimg.png" class="profileimg" /><div class="rating"></div><span class="username">Namn Namnsson</span></div>';
 				routes.appendChild(li);
 			}
 		});

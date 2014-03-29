@@ -161,7 +161,7 @@
 			{
 				var r = d[i];
 				var li = document.createElement('li');
-				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span>';
+				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span><span class="tripprice">155kr</span><div class="userinfo"><img src="img/defimg.png" class="profileimg" /><div class="rating"></div><span class="username">Namn Namnsson</span></div>';
 				routes.appendChild(li);
 			}
 		});
@@ -274,7 +274,8 @@
 		});
 
 		socket.on('updatechat', function (username, data) {
-			$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+			$('#conversation').append('<div class="msgitem"><div class="msguser"><img src="img/defimg.png" class="profileimg" /><span class="rating"></span><span class="username">'+username + ':</span></div><div class="bubble">' + data + '</div></div>');
+			$("#conversation").scrollTop($("#conversation")[0].scrollHeight);
 		});
 
 		socket.on('updateusers', function(data) {
