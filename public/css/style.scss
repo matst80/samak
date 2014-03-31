@@ -50,6 +50,7 @@ a {
 img {
 	max-width: 100%;
 }
+#map img { max-width: none; }
 .startlogo {
 	width: 90px;
 	margin: 0 auto;
@@ -248,14 +249,17 @@ body.menuopen {
 		height: 100%;
 		z-index: 1;
 		-webkit-transform: translate3d(0, 0, 0);
-		&.profile {
+		&.profile, &.statistics {
 			position: absolute;
 			top: 0;
 			background: #ffa274;
 			width: 100%;
 			height: 100%;
 		}
-		&.routelist {
+		&.statistics {
+			background: #2cc3a1;
+		}
+		&.routelist, &.findroutes {
 			position: absolute;
 			height: 70%;
 			top: 30%;
@@ -266,6 +270,9 @@ body.menuopen {
 			height: 70%;
 		}
 	}
+}
+.statistics {
+	color: #FFF;
 }
 .profileimg {
 	width: 60px;
@@ -452,7 +459,7 @@ body.menuopen {
 	}
 }
 
-#routelist {
+#routelist, #findroutes {
 	background: #e6e6e6;
 	list-style-type: none;
 	padding: 20px;
@@ -507,6 +514,27 @@ body.menuopen {
 			padding-top: 14px;
 			font-size: 16px;
 		}
+	}
+}
+.findroutes {
+	h2 {
+		margin-bottom: 0px;
+		margin-top: 0;
+	}
+	.inps {
+		position: absolute;
+		top: 0;
+		height: 50%;
+		left: 0;
+	}
+	#findroutes {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		height: 50%;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 }
 

@@ -11,11 +11,11 @@
 		<div class="pusher">
 			<div id="menu">
 				<ul>
-					<li><a class="searchicon">Sök</a></li>
+					<li><a class="searchicon" data-view="findroutes">Sök</a></li>
 					<li><a class="addicon" data-view="add">Ny resa</a></li>
 					<li><a class="profileicon" data-view="profile">Profil</a></li>
 					<li><a class="travelicon" data-view="routelist">Resor</a></li>
-					<li><a class="statisticsicon">Statistik</a></li>
+					<li><a class="statisticsicon" data-view="statistics">Statistik</a></li>
 				</ul>
 			</div>
 		</div>
@@ -32,7 +32,22 @@
 		<section>
 				<div id="map" style="width:100%;"></div>
 			</section>
-		<section class="view msgprofile show">
+		<section class="view findroutes show">
+			<div class="pad inps">
+				<h2>Sök resa</h2>
+				<div class="inprow">
+					<label for="from">Från:</label>
+					<input id="from" type="text" />
+				</div>
+				<div class="inprow">
+					<label for="to">Till:</label>
+					<input id="to" type="text" />
+				</div>
+			</div>
+			<ul id="findroutes">
+			</ul>
+		</section>
+		<section class="view msgprofile">
 			<div class="info">
 				<b>USERS</b>
 				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
@@ -93,6 +108,11 @@
 		<section class="view routelist">
 			<ul id="routelist">
 			</ul>
+		</section>
+		<section class="view statistics padtop">
+			<div class="pad">
+				<h2>Din statistik</h2>
+			</div>
 		</section>
 	</div>
 <script>
