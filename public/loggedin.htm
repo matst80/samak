@@ -53,6 +53,8 @@
 				<b>USERS</b>
 				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
 				<div id="users"></div>
+				<div class="button accept">Acceptera</div>
+				<div class="button showmap">Visa karta</div>
 			</div>
 			<div class="chat">
 				<div id="conversation">meddelanden</div>
@@ -353,6 +355,9 @@
 		$('#msglist li').click(function() {
 			$('.view').removeClass('show');
 			$('.msgprofile').addClass('show');
+		});
+		$('.showmap').click(function() {
+			$('body').toggleClass('showmap');
 		});
 	}
 	google.load("jquery", "1.4.2");

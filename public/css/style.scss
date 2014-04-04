@@ -220,6 +220,21 @@ body.menuopen {
 		transform: translate3d(75px, 0, 0);
 	}
 }
+body.showmap {
+	.view.msgprofile {
+		height: 20%;
+		.chat {
+			height: 0;
+			padding: 0;
+		}
+		.info {
+			height: 100%;
+		}
+	}
+	#map {
+		height: 80%;
+	}
+}
 .searchicon {
 	background: url(../img/search-icon.png) center 10px no-repeat;	
 }
@@ -355,6 +370,7 @@ body.menuopen {
 		position: relative;
 		padding: 10px 10px 60px 10px;
 		-webkit-box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.15);
+		-webkit-transition: all 0.3s ease;
 		input[type=button] {
 			background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
 			float: right;
@@ -457,6 +473,9 @@ body.menuopen {
 				margin-right: 10px;
 			}
 		}
+		&.minimize {
+			height: 0;
+		}
 	}
 	#conversation {
 		overflow-y: auto;
@@ -470,6 +489,16 @@ body.menuopen {
 		width: 100%;
 		bottom: 10px;
 		left: 0;
+	}
+	.button {
+		position: absolute;
+		bottom: 10px;
+	}
+	.accept {
+		left: 10px;
+	}
+	.showmap {
+		right: 10px;
 	}
 }
 .profile {
@@ -604,6 +633,18 @@ label {
 	color: #FFF;
 	&.disabled {
 		opacity: 0.5;
+	}
+	&.accept {
+		background: #e6e6e6 url(../img/check.png) 10px center no-repeat;
+		padding-left: 40px;
+		font-family: 'robotobold', serif;
+		color: #2f2f2f;
+	}
+	&.showmap {
+		background: #e6e6e6 url(../img/pin-small.png) 10px center no-repeat;
+		padding-left: 40px;
+		font-family: 'robotobold', serif;
+		color: #2f2f2f;
 	}
 }
 
