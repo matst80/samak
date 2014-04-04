@@ -160,7 +160,8 @@ img {
 #menu { 
 	position: fixed;
 	width: 75px;
-	background: #3e444d;
+	background: #3e444d url(../img/menubg.png) center top no-repeat;
+	background-size: auto 100%;
 	top: 0;
 	bottom: 0;
 	height: 100%;
@@ -178,7 +179,7 @@ img {
 		display: block;
 		//height: 60px;
 		font-size: 12px;
-		padding-top: 50px;
+		padding-top: 45px;
 		margin-bottom: 10px;
 		width: 100%;
 		color: #FFF;
