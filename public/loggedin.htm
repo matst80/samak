@@ -13,6 +13,7 @@
 				<ul>
 					<li><a class="searchicon" data-view="findroutes">Sök</a></li>
 					<li><a class="addicon" data-view="add">Ny resa</a></li>
+					<li><a class="chaticon" data-view="msgview">Chat<span class="noimsgs">12</span></a></li>
 					<li><a class="profileicon" data-view="profile">Profil</a></li>
 					<li><a class="travelicon" data-view="routelist">Resor</a></li>
 					<li><a class="statisticsicon" data-view="statistics">Statistik</a></li>
@@ -61,6 +62,13 @@
 					<input type="button" id="datasend" value="" />
 				</div>
 			</div>
+		</section>
+		<section class="view msgview padtop">
+			<ul id="msglist">
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+			</ul>
 		</section>
 		<section class="view profile pad padtop">
 			<div id="userdata">laddar...</div>
@@ -343,7 +351,10 @@
 			console.log(this,view);
 			$('.'+view).addClass('show');
 		});
-		
+		$('#msglist li').click(function() {
+			$('.view').removeClass('show');
+			$('.msgprofile').addClass('show');
+		});
 	}
 	google.load("jquery", "1.4.2");
 	google.load("maps", "3.x", {other_params: "sensor=false", callback:initialize});

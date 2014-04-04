@@ -234,6 +234,27 @@ body.menuopen {
 .addicon {
 	background: url(../img/add-icon.png) center 10px no-repeat;	
 }
+.chaticon {
+	background: url(../img/chat-icon.png) center 10px no-repeat;	
+	position: relative;
+} 
+
+.noimsgs {
+	text-align: center;
+	min-width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background: #d86044;
+	color: #FFF;
+	position: absolute;
+}
+#menu .noimsgs {
+	top: 0;
+	left: 5px;
+	min-width: 25px;
+	height: 25px;
+	padding-top: 5px;
+}
 .view {
 	visibility: hidden;
 	opacity: 0;
@@ -249,7 +270,7 @@ body.menuopen {
 		height: 100%;
 		z-index: 1;
 		-webkit-transform: translate3d(0, 0, 0);
-		&.profile, &.statistics {
+		&.profile, &.statistics, &.msgview {
 			position: absolute;
 			top: 0;
 			background: #ffa274;
@@ -459,7 +480,7 @@ body.menuopen {
 	}
 }
 
-#routelist, #findroutes {
+#routelist, #findroutes, #msglist {
 	background: #e6e6e6;
 	list-style-type: none;
 	padding: 20px;
@@ -514,7 +535,16 @@ body.menuopen {
 			padding-top: 14px;
 			font-size: 16px;
 		}
+		.noimsgs {
+			right: 0px;
+			top: 20px;
+			padding-top: 10px;
+		}
 	}
+}
+#msglist li {
+	padding-left: 0px;
+	background: transparent;
 }
 .findroutes {
 	h2 {
