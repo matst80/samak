@@ -20,6 +20,13 @@
     font-style: normal;
 
 }
+@import "variables";
+@import "mixins";
+@import "path";
+@import "core";
+@import "stacked";
+@import "icons";
+
 * {
 	box-sizing: border-box;
 }
@@ -39,6 +46,11 @@ body {
 	&.start {
 		background: url(../img/start.jpg) center center no-repeat;
 		background-size: auto 100%;
+		.view {
+			background: url(../img/start.jpg) center center no-repeat;
+			-webkit-background-size: cover;
+			background-size: cover;
+		}
 	}
 }
 .bold {
@@ -50,12 +62,56 @@ a {
 img {
 	max-width: 100%;
 }
+.loginfields {
+	width: 80%;
+	margin: 10px auto;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.2);
+	padding: 10px;
+	input[type=text], input[type=password] {
+		width: 100%;
+		margin: 0 auto 10px auto;
+		-webkit-border-top-right-radius: 5px;
+		-webkit-border-bottom-right-radius: 5px;
+		-moz-border-radius-topright: 5px;
+		-moz-border-radius-bottomright: 5px;
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		padding-left: 40px;
+	}
+	.submit {
+		background-color: #29b94b;
+		width: 100%;
+		text-align: center;
+		padding: 10px 0;
+	}
+}
+.input-group {
+	position: relative;
+}
+.input-group-addon {
+	background: #EEE;
+	height: 36px;
+	width: 30px;
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	i {
+		line-height: 36px;
+	}
+}
 #map img { max-width: none; }
 .startlogo {
-	width: 90px;
+	width: 50px;
 	margin: 0 auto;
 	display: block;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 #logo {
 	position: absolute;
@@ -70,17 +126,17 @@ img {
 	z-index: 90;
 }
 .logotext {
-	width: 80%;
+	width: 55%;
 	margin: 10px auto 30px auto;
 }
 .startbtn {
 	width: 240px;
-	height: 50px;
+	height: 40px;
 	margin: 10px auto;
 	display: block;
 	color: #FFF;
 	.icon {
-		height: 50px;
+		height: 40px;
 		width: 50px;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -89,9 +145,9 @@ img {
 		float: left;
 	}
 	.btntext {
-		line-height: 50px;
+		line-height: 40px;
 		width: 178px;
-		height: 50px;
+		height: 40px;
 		padding-right: 10px;
 		text-align: right;
 		float: left;
@@ -223,7 +279,8 @@ div#menutwo {
 	}
 	li {
 		font-size: 19px;
-		line-height: 50px;
+		line-height: 30px;
+		margin-bottom: 10px;
 		//margin-bottom: 28px;
 		-webkit-transition: all 400ms ease-in-out, opacity 1000ms ease;
 		transition: all 400ms ease-in-out, opacity 1000ms ease;
@@ -232,9 +289,18 @@ div#menutwo {
 		a {
 			color: rgba(255,255,255,0.9);
 			text-decoration: none;
-			line-height: 50px;
-			padding-left: 50px;
+			line-height: 30px;
+			//padding-left: 50px;
 			display: inline-block;
+		}
+		i {
+			font-size: 30px;
+			display: inline-block;
+			width: 30px;
+			margin-right: 20px;
+		}
+		.statsicon i {
+			color: #2cc3a1;
 		}
 	}
 	li.visible {
@@ -345,7 +411,7 @@ body.showmap {
 		height: 100%;
 		z-index: 1;
 		-webkit-transform: translate3d(0, 0, 0);
-		&.profile, &.statistics, &.msgview {
+		&.profile, &.statistics, &.msgview, &.add {
 			position: absolute;
 			top: 0;
 			background: #ffa274;
@@ -666,7 +732,7 @@ body.showmap {
 .inprow {
 	padding:5px 0;
 }
-input[type=text], input[type=date],input[type=time], input[type=number] {
+input[type=text], input[type=date],input[type=time], input[type=number], input[type=password] {
 	padding: 10px;
 	border-radius: 5px;
 	background: #FFF;
