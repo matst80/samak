@@ -190,7 +190,7 @@ img {
 	width: 100%;
 	height: 30%;
 }
-#wrapper {
+#wrapper,#wrappertwo {
 	//transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	//transform: translate3d(0, 0, 0);
@@ -206,6 +206,65 @@ img {
 	z-index: 50;
 	background: url(../img/menu-btn.png) center center no-repeat;
 }
+
+/*New menu*/
+/*	Content */
+/*	Content */
+div#menutwo {
+	position: absolute;
+	height: 100%; width: 100%;
+	background: url('../img/blur.jpg') no-repeat center center; 
+	-webkit-background-size: cover;
+	background-size: cover;
+	ul { 
+		width: 600px;
+		list-style: none; 
+		margin: 95px 0px 0px 75px;
+	}
+	li {
+		font-size: 19px;
+		line-height: 50px;
+		//margin-bottom: 28px;
+		-webkit-transition: all 400ms ease-in-out, opacity 1000ms ease;
+		transition: all 400ms ease-in-out, opacity 1000ms ease;
+		-webkit-transform: translate3d(-150px, 0px, 0px) scale(0.2);
+		opacity: 0;
+		a {
+			color: rgba(255,255,255,0.9);
+			text-decoration: none;
+			line-height: 50px;
+			padding-left: 50px;
+			display: inline-block;
+		}
+	}
+	li.visible {
+		-webkit-transform: translate3d(0px, 0px, 0px) scale(1);
+		opacity: 1;
+	}
+}
+// body {
+	// perspective:800px;
+	// -webkit-perspective:800px;
+// }
+#wrappertwo {
+	background: #ffa274;
+	position: absolute;
+	top: 0px; 
+	left: 0px;
+	height: 100%; 
+	width: 100%;
+	//background: #fff url('http://creativeda.sh/sandbox/social_menu/img/screen.jpg') no-repeat center center; 
+	//-webkit-background-size: cover;
+	//background-size: cover;
+	-webkit-transition: all 300ms ease-in-out;
+	-webkit-backface-visibility: hidden;
+	&.inactive {
+		cursor: pointer;
+		-webkit-transform: translate3d(65%, 0px, 0px) scale(0.7);
+		transform: translate3d(160px, 0px, 0px) scale(0.5);
+	}
+}
+/*End menu*/
 body.menuopen {
 	#wrapper {
 		 -webkit-transform: translate3d(75px, 0, 0);
@@ -236,22 +295,22 @@ body.showmap {
 	}
 }
 .searchicon {
-	background: url(../img/search-icon.png) center 10px no-repeat;	
+	background: url(../img/search-icon.png) left 10px no-repeat;	
 }
 .profileicon {
-	background: url(../img/profile-icon.png) center 10px no-repeat;	
+	background: url(../img/profile-icon.png) left 10px no-repeat;	
 }
 .travelicon {
-	background: url(../img/travel-icon.png) center 10px no-repeat;	
+	background: url(../img/travel-icon.png) left 10px no-repeat;	
 }
 .statisticsicon {
-	background: url(../img/statistic-icon.png) center 10px no-repeat;	
+	background: url(../img/statistic-icon.png) left 10px no-repeat;	
 }
 .addicon {
-	background: url(../img/add-icon.png) center 10px no-repeat;	
+	background: url(../img/add-icon.png) left 10px no-repeat;	
 }
 .chaticon {
-	background: url(../img/chat-icon.png) center 10px no-repeat;	
+	background: url(../img/chat-icon.png) left 10px no-repeat;	
 	position: relative;
 } 
 
@@ -264,12 +323,12 @@ body.showmap {
 	color: #FFF;
 	position: absolute;
 }
-#menu .noimsgs {
-	top: 0;
-	left: 5px;
+#menutwo .noimsgs {
+	left: -10px;
+	font-size: 12px;
+	line-height: 25px;
 	min-width: 25px;
 	height: 25px;
-	padding-top: 5px;
 }
 .view {
 	visibility: hidden;

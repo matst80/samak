@@ -9,7 +9,7 @@
 <body>
 	<div id="menuwrap">
 		<div class="pusher">
-			<div id="menu">
+			<div id="menutwo">
 				<ul>
 					<li><a class="searchicon" data-view="findroutes">Sök</a></li>
 					<li><a class="addicon" data-view="add">Ny resa</a></li>
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 	</div>
-	<div id="wrapper">
+	<div id="wrappertwo">
 		<!-- <div class="menubtn"></div> -->
 		<!-- <button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
 		  <span class="grid"></span>
@@ -342,15 +342,63 @@
 			}
 		});
 		
-		$('#menubtn').click(function() {
-			$(this).toggleClass('close');
-			$('body').toggleClass('menuopen');
-		});
+		//$('#menubtn').click(function() {
+		//	$(this).toggleClass('close');
+		//	$('body').toggleClass('menuopen');
+		//});
 		
-		$('#menu a').click(function() {
+		//$('#menu a').click(function() {
+		//	$('.view').removeClass('show');
+		//	var view = $(this).attr('data-view');
+		//	$('.'+view).addClass('show');
+		//});
+			/*	Reveal Menu */
+		if( 'ontouchstart' in window ){ var click = 'touchstart'; }
+		else { var click = 'click'; }
+		$('#menubtn').live(click, function(){
+			if( !$('#wrappertwo').hasClass('inactive') ){
+				$(this).addClass('close');
+				// Slide and scale content
+				$('#wrappertwo').addClass('inactive');
+				setTimeout(function(){ $('#wrappertwo').addClass('flag'); }, 100);
+				
+				// Slide in menu links
+				var timer = 0;
+				$.each($('#menutwo li'), function(i,v){
+					timer = 40 * i;
+					setTimeout(function(){
+						$(v).addClass('visible');
+					}, timer);
+				});
+			}
+		});
+			
+			
+
+			/*	Close Menu */
+		function closeMenu() {		
+			// Slide and scale content
+			$('#wrappertwo').removeClass('inactive flag');
+			$('#menubtn').removeClass('close');
+			// Reset menu
+			setTimeout(function(){
+				$('#menutwo li').removeClass('visible');
+			}, 300);
+		}
+			
+		$('#wrappertwo').live(click, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if( $('#wrappertwo').hasClass('flag') ){
+				closeMenu();
+			}
+		});
+		$('#menutwo li a').live(click, function(e){
+			e.preventDefault();
 			$('.view').removeClass('show');
 			var view = $(this).attr('data-view');
 			$('.'+view).addClass('show');
+			closeMenu();
 		});
 		$('#msglist li').click(function() {
 			$('.view').removeClass('show');
