@@ -30,14 +30,17 @@
 * {
 	box-sizing: border-box;
 }
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
 ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 body {
-	margin: 0;
-	padding: 0;
 	font-size: 14px; 
 	font-family: 'robotothin', serif;
 	background: #ffa274;
@@ -403,6 +406,9 @@ body.showmap {
 	z-index: -1;
 	position: absolute;
 	-webkit-transform: translate3d(100%, 0, 0);
+	overflow: hidden;
+	height: 100%;
+	top: 0;
 	&.show {
 		visibility: visible;
 		opacity: 1;
@@ -410,6 +416,7 @@ body.showmap {
 		width: 100%;
 		height: 100%;
 		z-index: 1;
+		overflow-y: visible;
 		-webkit-transform: translate3d(0, 0, 0);
 		&.profile, &.statistics, &.msgview, &.add {
 			position: absolute;
@@ -430,6 +437,8 @@ body.showmap {
 		}
 		&.msgprofile {
 			height: 70%;
+			top: 30%;
+			overflow-y: visible;
 		}
 	}
 }
