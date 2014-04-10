@@ -59,6 +59,9 @@ body {
 .bold {
 	font-family: 'robotobold', serif;
 }
+.thin {
+	font-family: 'robotothin', serif;
+}
 a {
 	text-decoration: none;
 }
@@ -349,8 +352,9 @@ body.menuopen {
 	}
 }
 body.showmap {
-	.view.msgprofile {
+	.view.show.msgprofile {
 		height: 20%;
+		top: 80%;
 		.chat {
 			height: 0;
 			padding: 0;
@@ -438,7 +442,7 @@ body.showmap {
 		&.msgprofile {
 			height: 70%;
 			top: 30%;
-			overflow-y: visible;
+			overflow: visible;
 		}
 	}
 }
