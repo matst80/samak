@@ -2461,7 +2461,7 @@ body.showmap #map {
   width: 60px;
   height: 60px;
   overflow: hidden;
-  border: 5px solid #FFF;
+  border: 3px solid #FFF;
   border-radius: 35px;
 }
 
@@ -2506,12 +2506,38 @@ body.showmap #map {
   position: relative;
 }
 /* line 477, style.scss */
+.msgprofile .smallinfo {
+  width: 70%;
+  left: 30%;
+  top: 5px;
+  position: absolute;
+  color: #FFF;
+}
+/* line 483, style.scss */
+.msgprofile .smallinfo i {
+  color: #d86044;
+  margin-right: 5px;
+}
+/* line 488, style.scss */
+.msgprofile .tripprice {
+  font-family: 'robotobold', serif;
+  color: #FFF;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 30px;
+}
+/* line 496, style.scss */
+.msgprofile .seats {
+  margin-right: 20px;
+}
+/* line 499, style.scss */
 .msgprofile .profileimg {
   top: -35px;
   left: 20px;
   position: absolute;
 }
-/* line 482, style.scss */
+/* line 504, style.scss */
 .msgprofile #users {
   position: absolute;
   top: -30px;
@@ -2521,7 +2547,7 @@ body.showmap #map {
   font-size: 18px;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 }
-/* line 491, style.scss */
+/* line 513, style.scss */
 .msgprofile .chat {
   height: 70%;
   background: #e6e6e6;
@@ -2531,7 +2557,7 @@ body.showmap #map {
   -webkit-box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
   -webkit-transition: all 0.3s ease;
 }
-/* line 499, style.scss */
+/* line 521, style.scss */
 .msgprofile .chat input[type=button] {
   background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
   float: right;
@@ -2542,22 +2568,22 @@ body.showmap #map {
   border: 0;
   display: block;
 }
-/* line 508, style.scss */
+/* line 530, style.scss */
 .msgprofile .chat input[type=button]:focus {
   outline: none;
 }
-/* line 512, style.scss */
+/* line 534, style.scss */
 .msgprofile .chat .setposition {
   float: left;
   margin-right: 20px;
   margin-left: 10px;
   margin-top: 5px;
 }
-/* line 518, style.scss */
+/* line 540, style.scss */
 .msgprofile .chat input[type=text] {
   width: 65%;
 }
-/* line 521, style.scss */
+/* line 543, style.scss */
 .msgprofile .chat .profileimg {
   position: static;
   float: left;
@@ -2566,32 +2592,32 @@ body.showmap #map {
   width: 40px;
   border-width: 3px;
 }
-/* line 529, style.scss */
+/* line 551, style.scss */
 .msgprofile .chat .msgitem {
   margin-bottom: 10px;
   position: relative;
 }
-/* line 532, style.scss */
+/* line 554, style.scss */
 .msgprofile .chat .msgitem:after {
   content: "";
   display: block;
   clear: both;
   min-height: 1%;
 }
-/* line 539, style.scss */
+/* line 561, style.scss */
 .msgprofile .chat .rating {
   position: absolute;
   left: 50px;
   top: 0;
   width: 100px;
 }
-/* line 545, style.scss */
+/* line 567, style.scss */
 .msgprofile .chat .username {
   display: inline-block;
   margin-top: 20px;
   font-family: 'robotobold', serif;
 }
-/* line 550, style.scss */
+/* line 572, style.scss */
 .msgprofile .chat .bubble {
   position: relative;
   background: #fcea85;
@@ -2602,7 +2628,7 @@ body.showmap #map {
   float: left;
   margin-left: 50px;
 }
-/* line 560, style.scss */
+/* line 582, style.scss */
 .msgprofile .chat .bubble:before {
   content: "";
   position: absolute;
@@ -2614,44 +2640,44 @@ body.showmap #map {
   border-right: 10px solid #fcea85;
   border-bottom: 5px solid transparent;
 }
-/* line 572, style.scss */
+/* line 594, style.scss */
 .msgprofile .chat .msguser {
   width: 100%;
   height: 40px;
 }
-/* line 577, style.scss */
+/* line 599, style.scss */
 .msgprofile .chat .mine .bubble {
   float: right;
   margin-left: 0;
   margin-right: 50px;
   background: #FFF;
 }
-/* line 582, style.scss */
+/* line 604, style.scss */
 .msgprofile .chat .mine .bubble:before {
   right: auto;
   left: 100%;
   border-right: 0;
   border-left: 10px solid #FFF;
 }
-/* line 589, style.scss */
+/* line 611, style.scss */
 .msgprofile .chat .mine .rating {
   left: auto;
   right: 60px;
 }
-/* line 593, style.scss */
+/* line 615, style.scss */
 .msgprofile .chat .mine .profileimg {
   float: right;
 }
-/* line 596, style.scss */
+/* line 618, style.scss */
 .msgprofile .chat .mine .username {
   float: right;
   margin-right: 10px;
 }
-/* line 601, style.scss */
+/* line 623, style.scss */
 .msgprofile .chat.minimize {
   height: 0;
 }
-/* line 605, style.scss */
+/* line 627, style.scss */
 .msgprofile #conversation {
   overflow-y: auto;
   overflow-x: hidden;
@@ -2659,28 +2685,28 @@ body.showmap #map {
   position: relative;
   height: 100%;
 }
-/* line 612, style.scss */
+/* line 634, style.scss */
 .msgprofile .sendrow {
   position: absolute;
   width: 100%;
   bottom: 10px;
   left: 0;
 }
-/* line 618, style.scss */
+/* line 640, style.scss */
 .msgprofile .button {
   position: absolute;
   bottom: 10px;
 }
-/* line 622, style.scss */
+/* line 644, style.scss */
 .msgprofile .accept {
   left: 10px;
 }
-/* line 625, style.scss */
+/* line 647, style.scss */
 .msgprofile .showmap {
   right: 10px;
 }
 
-/* line 630, style.scss */
+/* line 652, style.scss */
 .profile #userdata {
   text-align: center;
   color: #FFF;
@@ -2688,31 +2714,31 @@ body.showmap #map {
   font-size: 18px;
 }
 
-/* line 638, style.scss */
+/* line 660, style.scss */
 #routelist, #findroutes, #msglist {
   background: #e6e6e6;
   list-style-type: none;
   padding: 20px;
 }
-/* line 643, style.scss */
+/* line 665, style.scss */
 #routelist li, #findroutes li, #msglist li {
   padding: 10px 60px 10px 20px;
   background: url(../img/trip-arrow.png) left 13px no-repeat;
   border-bottom: 1px solid #DDD;
   position: relative;
 }
-/* line 648, style.scss */
+/* line 670, style.scss */
 #routelist li:after, #findroutes li:after, #msglist li:after {
   content: "";
   display: block;
   clear: both;
   min-height: 1%;
 }
-/* line 654, style.scss */
+/* line 676, style.scss */
 #routelist li span, #findroutes li span, #msglist li span {
   font-family: 'robotobold', serif;
 }
-/* line 657, style.scss */
+/* line 679, style.scss */
 #routelist li .profileimg, #findroutes li .profileimg, #msglist li .profileimg {
   float: left;
   margin-right: 10px;
@@ -2720,25 +2746,25 @@ body.showmap #map {
   height: 40px;
   border-width: 3px;
 }
-/* line 664, style.scss */
+/* line 686, style.scss */
 #routelist li .rating, #findroutes li .rating, #msglist li .rating {
   position: absolute;
   left: 50px;
   top: 0;
   width: 100px;
 }
-/* line 670, style.scss */
+/* line 692, style.scss */
 #routelist li .username, #findroutes li .username, #msglist li .username {
   display: inline-block;
   margin-top: 20px;
   font-family: 'robotobold', serif;
 }
-/* line 675, style.scss */
+/* line 697, style.scss */
 #routelist li .userinfo, #findroutes li .userinfo, #msglist li .userinfo {
   position: relative;
   margin-top: 10px;
 }
-/* line 679, style.scss */
+/* line 701, style.scss */
 #routelist li .tripprice, #findroutes li .tripprice, #msglist li .tripprice {
   position: absolute;
   width: 60px;
@@ -2753,32 +2779,62 @@ body.showmap #map {
   padding-top: 14px;
   font-size: 16px;
 }
-/* line 693, style.scss */
+/* line 715, style.scss */
 #routelist li .noimsgs, #findroutes li .noimsgs, #msglist li .noimsgs {
-  right: 0px;
+  left: 0px;
   top: 20px;
   padding-top: 10px;
+  opacity: 0.7;
+  display: block;
+  -webkit-animation: wobble 2s 1s infinite;
 }
 
-/* line 700, style.scss */
+@-webkit-keyframes wobble {
+  /* line 726, style.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  /* line 727, style.scss */
+  25% {
+    -webkit-transform: rotate(35deg);
+  }
+
+  /* line 728, style.scss */
+  50% {
+    -webkit-transform: rotate(-35deg);
+  }
+
+  /* line 729, style.scss */
+  75% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  /* line 730, style.scss */
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
+}
+
+/* line 732, style.scss */
 #msglist li {
   padding-left: 0px;
   background: transparent;
 }
 
-/* line 705, style.scss */
+/* line 737, style.scss */
 .findroutes h2 {
   margin-bottom: 0px;
   margin-top: 0;
 }
-/* line 709, style.scss */
+/* line 741, style.scss */
 .findroutes .inps {
   position: absolute;
   top: 0;
   height: 50%;
   left: 0;
 }
-/* line 715, style.scss */
+/* line 747, style.scss */
 .findroutes #findroutes {
   position: absolute;
   top: 50%;
@@ -2789,22 +2845,22 @@ body.showmap #map {
   overflow-y: auto;
 }
 
-/* line 726, style.scss */
+/* line 758, style.scss */
 .pad {
   padding: 10px 20px;
 }
 
-/* line 729, style.scss */
+/* line 761, style.scss */
 .padtop {
   padding-top: 70px;
 }
 
-/* line 732, style.scss */
+/* line 764, style.scss */
 .inprow {
   padding: 5px 0;
 }
 
-/* line 735, style.scss */
+/* line 767, style.scss */
 input[type=text], input[type=date], input[type=time], input[type=number], input[type=password] {
   padding: 10px;
   border-radius: 5px;
@@ -2812,23 +2868,23 @@ input[type=text], input[type=date], input[type=time], input[type=number], input[
   -webkit-apperance: none;
   border: 0;
 }
-/* line 741, style.scss */
+/* line 773, style.scss */
 input[type=text]:focus, input[type=date]:focus, input[type=time]:focus, input[type=number]:focus, input[type=password]:focus {
   outline: none;
 }
-/* line 744, style.scss */
+/* line 776, style.scss */
 input[type=text].priceinp, input[type=date].priceinp, input[type=time].priceinp, input[type=number].priceinp, input[type=password].priceinp {
   background: white url(../img/kr.png) 90% center no-repeat;
 }
 
-/* line 748, style.scss */
+/* line 780, style.scss */
 label {
   font-family: 'robotobold', serif;
   display: block;
   font-size: 16px;
 }
 
-/* line 753, style.scss */
+/* line 785, style.scss */
 .submit, .button {
   background: #439ad5;
   border-radius: 5px;
@@ -2836,18 +2892,18 @@ label {
   display: inline-block;
   color: #FFF;
 }
-/* line 759, style.scss */
+/* line 791, style.scss */
 .submit.disabled, .button.disabled {
   opacity: 0.5;
 }
-/* line 762, style.scss */
+/* line 794, style.scss */
 .submit.accept, .button.accept {
   background: #e6e6e6 url(../img/check.png) 10px center no-repeat;
   padding-left: 40px;
   font-family: 'robotobold', serif;
   color: #2f2f2f;
 }
-/* line 768, style.scss */
+/* line 800, style.scss */
 .submit.showmap, .button.showmap {
   background: #e6e6e6 url(../img/pin-small.png) 10px center no-repeat;
   padding-left: 40px;
@@ -2856,7 +2912,7 @@ label {
 }
 
 /*Menubutton*/
-/* line 777, style.scss */
+/* line 809, style.scss */
 button#menubtn {
   display: inline-block;
   margin: 0 0.8em;
@@ -2867,16 +2923,16 @@ button#menubtn {
   top: 0px;
   left: 0px;
 }
-/* line 786, style.scss */
+/* line 818, style.scss */
 button#menubtn:focus {
   outline: none;
 }
-/* line 789, style.scss */
+/* line 821, style.scss */
 button#menubtn span {
   display: block;
 }
 
-/* line 853, style.scss */
+/* line 885, style.scss */
 .lines-button {
   padding: 1.5rem 0.75rem;
   transition: .3s;
@@ -2885,16 +2941,16 @@ button#menubtn span {
   border-radius: 0.42857rem;
   /* */
 }
-/* line 860, style.scss */
+/* line 892, style.scss */
 .lines-button:hover {
   opacity: 1;
 }
-/* line 863, style.scss */
+/* line 895, style.scss */
 .lines-button:active {
   transition: 0;
 }
 
-/* line 877, style.scss */
+/* line 909, style.scss */
 .lines {
   display: inline-block;
   width: 3rem;
@@ -2904,7 +2960,7 @@ button#menubtn span {
   transition: 0.3s;
   position: relative;
 }
-/* line 881, style.scss */
+/* line 913, style.scss */
 .lines:before, .lines:after {
   display: inline-block;
   width: 3rem;
@@ -2918,47 +2974,47 @@ button#menubtn span {
   -webkit-transform-origin: 0.21429rem center;
   transform-origin: 0.21429rem center;
 }
-/* line 889, style.scss */
+/* line 921, style.scss */
 .lines:before {
   top: 0.75rem;
 }
-/* line 892, style.scss */
+/* line 924, style.scss */
 .lines:after {
   top: -0.75rem;
 }
 
-/* line 900, style.scss */
+/* line 932, style.scss */
 .lines-button:hover .lines:before {
   top: 0.85714rem;
 }
-/* line 903, style.scss */
+/* line 935, style.scss */
 .lines-button:hover .lines:after {
   top: -0.85714rem;
 }
 
-/* line 908, style.scss */
+/* line 940, style.scss */
 .lines-button.close {
   -webkit-transform: scale3d(0.8, 0.8, 0.8);
   transform: scale3d(0.8, 0.8, 0.8);
 }
 
-/* line 914, style.scss */
+/* line 946, style.scss */
 .lines-button.x.close .lines {
   background: transparent;
 }
-/* line 916, style.scss */
+/* line 948, style.scss */
 .lines-button.x.close .lines:before, .lines-button.x.close .lines:after {
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   top: 0;
   width: 3rem;
 }
-/* line 922, style.scss */
+/* line 954, style.scss */
 .lines-button.x.close .lines:before {
   -webkit-transform: rotate3d(0, 0, 1, 45deg);
   transform: rotate3d(0, 0, 1, 45deg);
 }
-/* line 926, style.scss */
+/* line 958, style.scss */
 .lines-button.x.close .lines:after {
   -webkit-transform: rotate3d(0, 0, 1, -45deg);
   transform: rotate3d(0, 0, 1, -45deg);

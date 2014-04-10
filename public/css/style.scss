@@ -440,7 +440,7 @@ body.showmap {
 	width: 60px;
 	height: 60px;
 	overflow: hidden;
-	border: 5px solid #FFF;
+	border: 3px solid #FFF;
 	border-radius: 35px;
 }
 .setposition {
@@ -473,6 +473,28 @@ body.showmap {
 	.info {
 		height: 30%;
 		position: relative;
+	}
+	.smallinfo {
+		width: 70%;
+		left: 30%;
+		top: 5px;
+		position: absolute;
+		color: #FFF;
+		i {
+			color: #d86044;
+			margin-right: 5px;
+		}
+	}
+	.tripprice {
+		font-family: 'robotobold', serif;
+		color: #FFF;
+		position: absolute;
+		right: 10px;
+		top: 5px;
+		font-size: 30px;
+	}
+	.seats {
+		margin-right: 20px;
 	}
 	.profileimg {
 		top: -35px;
@@ -691,11 +713,21 @@ body.showmap {
 			font-size: 16px;
 		}
 		.noimsgs {
-			right: 0px;
+			left: 0px;
 			top: 20px;
 			padding-top: 10px;
+			opacity: 0.7;
+			display: block;
+			-webkit-animation: wobble 2s 1s infinite;
 		}
 	}
+}
+@-webkit-keyframes wobble {
+  0% { -webkit-transform: rotate(0deg) }
+  25%   { -webkit-transform: rotate(35deg); }
+  50%   { -webkit-transform: rotate(-35deg); }
+  75%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(0deg) }
 }
 #msglist li {
 	padding-left: 0px;
