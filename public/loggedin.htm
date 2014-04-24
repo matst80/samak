@@ -1,0 +1,319 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script src="userdata.js"></script>
+	<script src="/js/socket.io.min.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+</head>
+<body>
+	<div id="menuwrap">
+		<div class="pusher">
+			<div id="menu">
+				<ul>
+					<li><a class="searchicon">Sök</a></li>
+					<li><a class="addicon" data-view="add">Ny resa</a></li>
+					<li><a class="profileicon" data-view="profile">Profil</a></li>
+					<li><a class="travelicon" data-view="routelist">Resor</a></li>
+					<li><a class="statisticsicon">Statistik</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="wrapper">
+		<!-- <div class="menubtn"></div> -->
+		<!-- <button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
+		  <span class="grid"></span>
+		</button> -->
+		<button id="menubtn" class="lines-button x" type="button" role="button" aria-label="Toggle Navigation">
+		  <span class="lines"></span>
+		</button>
+		<div id="logo"></div>
+		<section class="view msgprofile show">
+			<section>
+				<div id="map" style="width:100%;"></div>
+			</section>
+			<div class="info">
+				<b>USERS</b>
+				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
+				<div id="users"></div>
+			</div>
+			<div class="chat">
+				<div id="conversation">meddelanden</div>
+				<div class="sendrow">
+					<div class="setposition"></div>
+					<input id="data" type="text" placeholder="Skriv meddelande..." />
+					<input type="button" id="datasend" value="" />
+				</div>
+			</div>
+		</section>
+		<section class="view profile padtop">
+			<div id="userdata">laddar...</div>
+			<img id="profilepic" alt="profilbild" />
+			<a href="/logout">Logga ut</a>
+		</section>
+		<section class="view add pad padtop">
+			<div>
+				<label for="from">Från:</label>
+				<input id="from" type="text" />
+			</div>
+			<div>
+				<label for="to">Till:</label>
+				<input id="to" type="text" />
+			</div>
+			<div>
+				<label for="to">Åker:</label>
+				<input id="startdate" type="date" />
+				<input id="starttime" type="time" />
+				
+			</div>
+			<div>
+				<span class="button disabled submit" id="addroute">Lägg till</span>
+			</div>
+			
+		</section>
+		<section class="view routelist padtop">
+			<ul id="routelist">
+			</ul>
+		</section>
+	</div>
+<script>
+
+	var mapStyle = [
+	  {
+	    "featureType": "landscape",
+	    "stylers": [
+	      { "saturation": -53 },
+	      { "lightness": 12 },
+	      { "hue": "#5eff00" },
+	      { "weight": 0.1 },
+	      { "visibility": "on" }
+	    ]
+	  },{
+	    "featureType": "poi",
+	    "stylers": [
+	      { "visibility": "off" }
+	    ]
+	  },{
+	    "featureType": "road",
+	    "elementType": "geometry",
+	    "stylers": [
+	      { "color": "#3c9471" }
+	    ]
+	  }
+	];
+
+
+	Date.prototype.toSqlString = function() {
+		var d1=this;
+
+        var curr_year = d1.getFullYear();
+
+        var curr_month = d1.getMonth() + 1; //Months are zero based
+        if (curr_month < 10)
+            curr_month = "0" + curr_month;
+
+        var curr_date = d1.getDate();
+        if (curr_date < 10)
+            curr_date = "0" + curr_date;
+
+        var curr_hour = d1.getHours();
+        if (curr_hour < 10)
+            curr_hour = "0" + curr_hour;
+
+        var curr_min = d1.getMinutes();
+        if (curr_min < 10)
+            curr_min = "0" + curr_min;
+
+        var curr_sec = d1.getSeconds();     
+        if (curr_sec < 10)
+            curr_sec = "0" + curr_sec;
+
+        return curr_year + "-" + curr_month + "-" + curr_date + " " + curr_hour + ":" + curr_min + ":" + curr_sec;
+	}
+	
+	var now = new Date();
+
+
+	function initialize()
+	{
+
+		var addbutton = document.getElementById('addroute');
+		var from = document.getElementById('from');
+		var to = document.getElementById('to');
+		var routes = document.getElementById('routelist');
+		var startdate = document.getElementById('startdate');
+		var starttime = document.getElementById('starttime');
+
+		var directionsService = new google.maps.DirectionsService();
+		var directionsDisplay = new google.maps.DirectionsRenderer();
+
+		$.getJSON('/api/routes',function(d) {
+			for(var i=0;i<d.length;i++)
+			{
+				var r = d[i];
+				var li = document.createElement('li');
+				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span>';
+				routes.appendChild(li);
+			}
+		});
+		
+		function updatePos(lng,lat)
+		{
+			var latlng = new google.maps.LatLng(lat, lng);
+        	map.panTo(latlng);
+        	geocoder.geocode({'latLng': latlng}, function(results, status) {
+	            if(status == google.maps.GeocoderStatus.OK) {
+                	console.log(results[0]);
+                	document.getElementById('from').value = results[0]["formatted_address"];
+            	};
+        	});
+		}
+		var currentRoute = {};
+		
+		var styledMap = new google.maps.StyledMapType(mapStyle, {name: "Styled Map"});
+
+		var mapOptions = {
+        	center: new google.maps.LatLng(60.604819,15.6656285),
+        	mapTypeControlOptions: {
+      			mapTypeIds: [google.maps.MapTypeId.ROADMAP,google.maps.MapTypeId.SATELLITE,google.maps.MapTypeId.HYBRID, 'map_style']
+			},
+        	zoom: 12
+        };
+        
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+ 		map.mapTypes.set('map_style', styledMap);
+  		map.setMapTypeId('map_style');
+
+		directionsDisplay.setMap(map);
+
+		function calcRoute() {
+			currentRoute = {};
+			addbutton.className = 'button disabled';
+			var start = document.getElementById('from').value;
+			var end = document.getElementById('to').value;
+			var request = {
+			    origin:start,
+			    destination:end,
+			    travelMode: google.maps.TravelMode.DRIVING
+			};
+			directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					addbutton.className = 'button';
+					currentRoute = response.routes[0];
+			    	directionsDisplay.setDirections(response);
+			    }
+			});
+		}
+
+		function addRoute()
+		{
+			
+			var l = currentRoute.legs[0];
+			if (l) {
+				var route = {
+					distance: l.distance.value,
+					duration: l.duration.value,
+					starttime: now.toSqlString(),
+					end: l.end_address,
+					start: l.start_address,
+					startlat: l.start_location.lat(),
+					startlng: l.start_location.lng(),
+					endlat: l.end_location.lat(),
+					endlng: l.end_location.lng(),
+				};
+				console.log(route);
+				$.post('/api/route/add',route,function(d) {
+					console.log(d);
+				},'json');
+			}
+		}
+
+		document.getElementById('to').addEventListener('change',calcRoute,false);
+		addbutton.addEventListener('click',addRoute,false);
+
+		function getLocation()
+		{
+			function showPosition(position)
+		  	{
+		  		updatePos(position.coords.longitude,position.coords.latitude);
+		  	}
+			if (navigator.geolocation)
+		    {
+		    	navigator.geolocation.getCurrentPosition(showPosition);
+		    }
+		}
+		getLocation();
+		
+		
+    	var geocoder = new google.maps.Geocoder();
+    	if(google.loader.ClientLocation) {
+	        var lat = google.loader.ClientLocation.latitude;
+        	var lng = google.loader.ClientLocation.longitude;
+        	updatePos(lng,lat);
+        	
+    	}
+
+    	var socket = io.connect('http://samak.foo.com/');
+
+
+		socket.on('connect', function() {
+			socket.emit('adduser', userdata.displayName);
+		 	navigator.geolocation.watchPosition(function(position) {
+	    		socket.emit('pos', position);
+	    	});
+		});
+
+		socket.on('updatechat', function (username, data) {
+			$('#conversation').append('<b>'+username + ':</b> ' + data + '<br>');
+		});
+
+		socket.on('updateusers', function(data) {
+			$('#users').empty();
+			$.each(data, function(key, value) {
+				$('#users').append('<div>' + key + '</div>');
+			});
+		});
+
+		
+		// when the client clicks SEND
+		$('#datasend').click( function() {
+			var message = $('#data').val();
+			$('#data').val('');
+			// tell server to execute 'sendchat' and send along one parameter
+			socket.emit('sendchat', message);
+		});
+
+		// when the client hits ENTER on their keyboard
+		$('#data').keypress(function(e) {
+			if(e.which == 13) {
+				$(this).blur();
+				$('#datasend').focus().click();
+			}
+		});
+		
+		$('#menubtn').click(function() {
+			$(this).toggleClass('close');
+			$('body').toggleClass('menuopen');
+		});
+		
+		$('#menu a').click(function() {
+			$('.view').removeClass('show');
+			var view = $(this).attr('data-view');
+			console.log(this,view);
+			$('.'+view).addClass('show');
+		});
+		
+	}
+	google.load("jquery", "1.4.2");
+	google.load("maps", "3.x", {other_params: "sensor=false", callback:initialize});
+	document.getElementById('userdata').innerHTML = userdata.displayName;
+	document.getElementById('profilepic').src = 'https://graph.facebook.com/'+userdata.username+'/picture';
+
+	
+	
+	
+</script>
+</body>
+</html>
