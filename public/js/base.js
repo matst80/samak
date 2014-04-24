@@ -247,6 +247,61 @@
 				$('#datasend').focus().click();
 			}
 		});
+		var click = ( 'ontouchstart' in window )?'touchstart':'click';
+		
+		$('#menubtn').live(click, function(){
+			console.log('hoho');
+			if( !$('#wrappertwo').hasClass('inactive') ){
+				$(this).addClass('close');
+				// Slide and scale content
+				$('#wrappertwo').addClass('inactive');
+				setTimeout(function(){ $('#wrappertwo').addClass('flag'); }, 100);
+				
+				// Slide in menu links
+				var timer = 0;
+				$.each($('#menutwo li'), function(i,v){
+					timer = 40 * i;
+					setTimeout(function(){
+						$(v).addClass('visible');
+					}, timer);
+				});
+			}
+		});
+			
+			
+
+			/*	Close Menu */
+		function closeMenu() {		
+			// Slide and scale content
+			$('#wrappertwo').removeClass('inactive flag');
+			$('#menubtn').removeClass('close');
+			// Reset menu
+			setTimeout(function(){
+				$('#menutwo li').removeClass('visible');
+			}, 300);
+		}
+			
+		$('#wrappertwo').live(click, function(e){
+			e.stopPropagation();
+			e.preventDefault();
+			if( $('#wrappertwo').hasClass('flag') ){
+				closeMenu();
+			}
+		});
+		$('#menutwo li a').live(click, function(e){
+			e.preventDefault();
+			$('.view').removeClass('show');
+			var view = $(this).attr('data-view');
+			$('.'+view).addClass('show');
+			closeMenu();
+		});
+		$('#msglist li').click(function() {
+			$('.view').removeClass('show');
+			$('.msgprofile').addClass('show');
+		});
+		$('.showmap').click(function() {
+			$('body').toggleClass('showmap');
+		});
 
 	}
 	google.load("jquery", "1.4.2");

@@ -24,7 +24,7 @@ var pool =  mysql.createPool({
   });	
 
 
-
+console.log(app);
 
 app.configure(function() {
   app.use(express.static('public'));
