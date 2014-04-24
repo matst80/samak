@@ -20,10 +20,27 @@
     font-style: normal;
 
 }
+@import "variables";
+@import "mixins";
+@import "path";
+@import "core";
+@import "stacked";
+@import "icons";
 
-body {
+* {
+	box-sizing: border-box;
+}
+html, body {
+	height: 100%;
 	margin: 0;
 	padding: 0;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+body {
 	font-size: 14px; 
 	font-family: 'robotothin', serif;
 	background: #ffa274;
@@ -32,10 +49,18 @@ body {
 	&.start {
 		background: url(../img/start.jpg) center center no-repeat;
 		background-size: auto 100%;
+		.view {
+			background: url(../img/start.jpg) center center no-repeat;
+			-webkit-background-size: cover;
+			background-size: cover;
+		}
 	}
 }
 .bold {
 	font-family: 'robotobold', serif;
+}
+.thin {
+	font-family: 'robotothin', serif;
 }
 a {
 	text-decoration: none;
@@ -43,11 +68,56 @@ a {
 img {
 	max-width: 100%;
 }
+.loginfields {
+	width: 80%;
+	margin: 10px auto;
+	border-radius: 10px;
+	background: rgba(255,255,255,0.2);
+	padding: 10px;
+	input[type=text], input[type=password] {
+		width: 100%;
+		margin: 0 auto 10px auto;
+		-webkit-border-top-right-radius: 5px;
+		-webkit-border-bottom-right-radius: 5px;
+		-moz-border-radius-topright: 5px;
+		-moz-border-radius-bottomright: 5px;
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+		padding-left: 40px;
+	}
+	.submit {
+		background-color: #29b94b;
+		width: 100%;
+		text-align: center;
+		padding: 10px 0;
+	}
+}
+.input-group {
+	position: relative;
+}
+.input-group-addon {
+	background: #EEE;
+	height: 36px;
+	width: 30px;
+	position: absolute;
+	display: inline-block;
+	text-align: center;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	i {
+		line-height: 36px;
+	}
+}
+#map img { max-width: none; }
 .startlogo {
-	width: 90px;
+	width: 50px;
 	margin: 0 auto;
 	display: block;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 #logo {
 	position: absolute;
@@ -62,17 +132,17 @@ img {
 	z-index: 90;
 }
 .logotext {
-	width: 80%;
+	width: 55%;
 	margin: 10px auto 30px auto;
 }
 .startbtn {
 	width: 240px;
-	height: 50px;
+	height: 40px;
 	margin: 10px auto;
 	display: block;
 	color: #FFF;
 	.icon {
-		height: 50px;
+		height: 40px;
 		width: 50px;
 		background-position: center center;
 		background-repeat: no-repeat;
@@ -81,9 +151,9 @@ img {
 		float: left;
 	}
 	.btntext {
-		line-height: 50px;
+		line-height: 40px;
 		width: 178px;
-		height: 50px;
+		height: 40px;
 		padding-right: 10px;
 		text-align: right;
 		float: left;
@@ -152,7 +222,8 @@ img {
 #menu { 
 	position: fixed;
 	width: 75px;
-	background: #3e444d;
+	background: #3e444d url(../img/menubg.png) center top no-repeat;
+	background-size: auto 100%;
 	top: 0;
 	bottom: 0;
 	height: 100%;
@@ -170,7 +241,7 @@ img {
 		display: block;
 		//height: 60px;
 		font-size: 12px;
-		padding-top: 50px;
+		padding-top: 45px;
 		margin-bottom: 10px;
 		width: 100%;
 		color: #FFF;
@@ -181,11 +252,14 @@ img {
 	width: 100%;
 	height: 30%;
 }
-#wrapper {
+#wrapper,#wrappertwo {
 	//transition: all 0.5s ease;
 	-webkit-transition: all 0.5s ease;
 	//transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
+	position: relative;
+	height: 100%;
+	
 }
 .menubtn {
 	width: 50px;
@@ -194,6 +268,75 @@ img {
 	z-index: 50;
 	background: url(../img/menu-btn.png) center center no-repeat;
 }
+
+/*New menu*/
+/*	Content */
+/*	Content */
+div#menutwo {
+	position: absolute;
+	height: 100%; width: 100%;
+	background: url('../img/blur.jpg') no-repeat center center; 
+	-webkit-background-size: cover;
+	background-size: cover;
+	ul { 
+		width: 600px;
+		list-style: none; 
+		margin: 95px 0px 0px 75px;
+	}
+	li {
+		font-size: 19px;
+		line-height: 30px;
+		margin-bottom: 10px;
+		//margin-bottom: 28px;
+		-webkit-transition: all 400ms ease-in-out, opacity 1000ms ease;
+		transition: all 400ms ease-in-out, opacity 1000ms ease;
+		-webkit-transform: translate3d(-150px, 0px, 0px) scale(0.2);
+		opacity: 0;
+		a {
+			color: rgba(255,255,255,0.9);
+			text-decoration: none;
+			line-height: 30px;
+			//padding-left: 50px;
+			display: inline-block;
+		}
+		i {
+			font-size: 30px;
+			display: inline-block;
+			width: 30px;
+			margin-right: 20px;
+		}
+		.statsicon i {
+			color: #2cc3a1;
+		}
+	}
+	li.visible {
+		-webkit-transform: translate3d(0px, 0px, 0px) scale(1);
+		opacity: 1;
+	}
+}
+// body {
+	// perspective:800px;
+	// -webkit-perspective:800px;
+// }
+#wrappertwo {
+	background: #ffa274;
+	position: absolute;
+	top: 0px; 
+	left: 0px;
+	height: 100%; 
+	width: 100%;
+	//background: #fff url('http://creativeda.sh/sandbox/social_menu/img/screen.jpg') no-repeat center center; 
+	//-webkit-background-size: cover;
+	//background-size: cover;
+	-webkit-transition: all 300ms ease-in-out;
+	-webkit-backface-visibility: hidden;
+	&.inactive {
+		cursor: pointer;
+		-webkit-transform: translate3d(65%, 0px, 0px) scale(0.7);
+		transform: translate3d(160px, 0px, 0px) scale(0.5);
+	}
+}
+/*End menu*/
 body.menuopen {
 	#wrapper {
 		 -webkit-transform: translate3d(75px, 0, 0);
@@ -208,11 +351,10 @@ body.menuopen {
 		transform: translate3d(75px, 0, 0);
 	}
 }
-<<<<<<< HEAD
-=======
 body.showmap {
-	.view.msgprofile {
+	.view.show.msgprofile {
 		height: 20%;
+		top: 80%;
 		.chat {
 			height: 0;
 			padding: 0;
@@ -225,21 +367,41 @@ body.showmap {
 		height: 80%;
 	}
 }
->>>>>>> parent of 98b8cc2... småpill
 .searchicon {
-	background: url(../img/search-icon.png) center 10px no-repeat;	
+	background: url(../img/search-icon.png) left 10px no-repeat;	
 }
 .profileicon {
-	background: url(../img/profile-icon.png) center 10px no-repeat;	
+	background: url(../img/profile-icon.png) left 10px no-repeat;	
 }
 .travelicon {
-	background: url(../img/travel-icon.png) center 10px no-repeat;	
+	background: url(../img/travel-icon.png) left 10px no-repeat;	
 }
 .statisticsicon {
-	background: url(../img/statistic-icon.png) center 10px no-repeat;	
+	background: url(../img/statistic-icon.png) left 10px no-repeat;	
 }
 .addicon {
-	background: url(../img/add-icon.png) center 10px no-repeat;	
+	background: url(../img/add-icon.png) left 10px no-repeat;	
+}
+.chaticon {
+	background: url(../img/chat-icon.png) left 10px no-repeat;	
+	position: relative;
+} 
+
+.noimsgs {
+	text-align: center;
+	min-width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background: #d86044;
+	color: #FFF;
+	position: absolute;
+}
+#menutwo .noimsgs {
+	left: -10px;
+	font-size: 12px;
+	line-height: 25px;
+	min-width: 25px;
+	height: 25px;
 }
 .view {
 	visibility: hidden;
@@ -248,14 +410,18 @@ body.showmap {
 	z-index: -1;
 	position: absolute;
 	-webkit-transform: translate3d(100%, 0, 0);
+	overflow: hidden;
+	height: 100%;
+	top: 0;
 	&.show {
 		visibility: visible;
 		opacity: 1;
-		position: static;
+		position: absolute;
+		width: 100%;
+		height: 100%;
 		z-index: 1;
+		overflow-y: visible;
 		-webkit-transform: translate3d(0, 0, 0);
-<<<<<<< HEAD
-=======
 		&.profile, &.statistics, &.msgview, &.add {
 			position: absolute;
 			top: 0;
@@ -276,16 +442,18 @@ body.showmap {
 		&.msgprofile {
 			height: 70%;
 			top: 30%;
-			overflow-y: visible;
+			overflow: visible;
 		}
->>>>>>> parent of 98b8cc2... småpill
 	}
+}
+.statistics {
+	color: #FFF;
 }
 .profileimg {
 	width: 60px;
 	height: 60px;
 	overflow: hidden;
-	border: 5px solid #FFF;
+	border: 3px solid #FFF;
 	border-radius: 35px;
 }
 .setposition {
@@ -293,10 +461,53 @@ body.showmap {
 	height: 30px;
 	background: url(../img/position.png) center center no-repeat;
 }
+.rating {
+	height: 15px;
+	width: 100%;
+	display: inline-block;
+	background: url(../img/rating.png) left center no-repeat;
+	&.onestar {
+		background: url(../img/1-star.png) left center no-repeat;
+	}
+	&.twostar {
+		background: url(../img/2-star.png) left center no-repeat;
+	}
+	&.threestar {
+		background: url(../img/3-star.png) left center no-repeat;
+	}
+	&.fourstar {
+		background: url(../img/4-star.png) left center no-repeat;
+	}
+	&.fivestar {
+		background: url(../img/5-star.png) left center no-repeat;
+	}
+}
 .msgprofile {
 	.info {
-		height: 20%;
+		height: 30%;
 		position: relative;
+	}
+	.smallinfo {
+		width: 70%;
+		left: 30%;
+		top: 5px;
+		position: absolute;
+		color: #FFF;
+		i {
+			color: #d86044;
+			margin-right: 5px;
+		}
+	}
+	.tripprice {
+		font-family: 'robotobold', serif;
+		color: #FFF;
+		position: absolute;
+		right: 10px;
+		top: 5px;
+		font-size: 30px;
+	}
+	.seats {
+		margin-right: 20px;
 	}
 	.profileimg {
 		top: -35px;
@@ -313,12 +524,13 @@ body.showmap {
 		text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
 	}
 	.chat {
-		height: 40%;
+		height: 70%;
 		background: #e6e6e6;
-		overflow: auto;
+		overflow: hidden;
 		position: relative;
-		padding: 10px 10px 30px 10px;
+		padding: 10px 10px 60px 10px;
 		-webkit-box-shadow: inset 0px 5px 5px 0px rgba(0,0,0,0.15);
+		-webkit-transition: all 0.3s ease;
 		input[type=button] {
 			background: #439ad5 url(../img/send-arrow.png) center center no-repeat;
 			float: right;
@@ -328,6 +540,9 @@ body.showmap {
 			-webkit-apperance: none;
 			border: 0;
 			display: block;
+			&:focus {
+				outline: none;
+			}
 		}
 		.setposition {
 			float: left;
@@ -335,6 +550,99 @@ body.showmap {
 			margin-left: 10px;
 			margin-top: 5px;
 		}
+		input[type=text] {
+			width: 65%;
+		}
+		.profileimg {
+			position: static;
+			float: left;
+			margin-right: 10px;
+			height: 40px;
+			width: 40px;
+			border-width: 3px;
+		}
+		.msgitem {
+			margin-bottom: 10px;
+			position: relative;
+			&:after {
+				content: "";
+				display: block;
+				clear: both;
+				min-height: 1%;
+			}
+		}
+		.rating {
+			position: absolute;
+			left: 50px;
+			top: 0;
+			width: 100px;
+		}
+		.username {
+			display: inline-block;
+			margin-top: 20px;
+			font-family: 'robotobold', serif;
+		}
+		.bubble {
+			position: relative;
+			background: #fcea85;
+			border-radius: 5px;
+			padding: 10px;
+			text-align: left;
+			width: 65%;
+			//left: 60px;
+			float: left;
+			margin-left: 50px;
+			&:before {
+			   content:"";
+			   position: absolute;
+			   right: 100%;
+			   top: 10px;
+			   width: 0;
+			   height: 0;
+			   border-top: 5px solid transparent;
+			   border-right: 10px solid #fcea85;
+			   border-bottom: 5px solid transparent;
+			}
+		}
+		.msguser {
+			width: 100%;
+			height: 40px;
+		}
+		.mine {
+			.bubble {
+				float: right;
+				margin-left: 0;
+				margin-right: 50px;
+				background: #FFF;
+				&:before {
+					right: auto;
+					left: 100%;
+					border-right: 0;
+					border-left: 10px solid #FFF;
+				}
+			}
+			.rating {
+				left: auto;
+				right: 60px;
+			}
+			.profileimg {
+				float: right;
+			}
+			.username {
+				float: right;
+				margin-right: 10px;
+			}
+		}
+		&.minimize {
+			height: 0;
+		}
+	}
+	#conversation {
+		overflow-y: auto;
+		overflow-x: hidden;
+		margin-bottom: 30px;
+		position: relative;
+		height: 100%;
 	}
 	.sendrow {
 		position: absolute;
@@ -342,15 +650,134 @@ body.showmap {
 		bottom: 10px;
 		left: 0;
 	}
+	.button {
+		position: absolute;
+		bottom: 10px;
+	}
+	.accept {
+		left: 10px;
+	}
+	.showmap {
+		right: 10px;
+	}
 }
+.profile {
+	#userdata {
+		text-align: center;
+		color: #FFF;
+		font-family: 'robotobold', serif;
+		font-size: 18px;
+	}
+}
+
+#routelist, #findroutes, #msglist {
+	background: #e6e6e6;
+	list-style-type: none;
+	padding: 20px;
+	
+	li {
+		padding: 10px 60px 10px 20px;
+		background: url(../img/trip-arrow.png) left 13px no-repeat;
+		border-bottom: 1px solid #DDD;
+		position: relative;
+		&:after {
+			content: "";
+			display: block;
+			clear: both;
+			min-height: 1%;
+		}
+		span {
+			font-family: 'robotobold', serif;
+		}
+		.profileimg {
+			float: left;
+			margin-right: 10px;
+			width: 40px;
+			height: 40px;
+			border-width: 3px;
+		}
+		.rating {
+			position: absolute;
+			left: 50px;
+			top: 0;
+			width: 100px;
+		}
+		.username {
+			display: inline-block;
+			margin-top: 20px;
+			font-family: 'robotobold', serif;
+		}
+		.userinfo {
+			position: relative;
+			margin-top: 10px;
+		}
+		.tripprice {
+			position: absolute;
+			width: 60px;
+			text-align: center;
+			height: 60px;
+			border-radius: 30px;
+			border: 5px solid #FFF;
+			color: #d86044;
+			right: 0px;
+			top: 10px;
+			background: #FFF;
+			padding-top: 14px;
+			font-size: 16px;
+		}
+		.noimsgs {
+			left: 0px;
+			top: 20px;
+			padding-top: 10px;
+			opacity: 0.7;
+			display: block;
+			-webkit-animation: wobble 2s 1s infinite;
+		}
+	}
+}
+@-webkit-keyframes wobble {
+  0% { -webkit-transform: rotate(0deg) }
+  25%   { -webkit-transform: rotate(35deg); }
+  50%   { -webkit-transform: rotate(-35deg); }
+  75%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(0deg) }
+}
+#msglist li {
+	padding-left: 0px;
+	background: transparent;
+}
+.findroutes {
+	h2 {
+		margin-bottom: 0px;
+		margin-top: 0;
+	}
+	.inps {
+		position: absolute;
+		top: 0;
+		height: 50%;
+		left: 0;
+	}
+	#findroutes {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		height: 50%;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+}
+
 .pad {
 	padding: 10px 20px;
 }
 .padtop {
 	padding-top: 70px;
 }
-
-input[type=text], input[type=date],input[type=time] {
+.inprow {
+	padding:5px 0;
+}
+input[type=text], input[type=date],input[type=time], input[type=number], input[type=password] {
 	padding: 10px;
 	border-radius: 5px;
 	background: #FFF;
@@ -359,13 +786,16 @@ input[type=text], input[type=date],input[type=time] {
 	&:focus {
 		outline: none;
 	}
+	&.priceinp {
+		background: #FFF url(../img/kr.png) 90% center no-repeat;
+	}
 }
 label {
 	font-family: 'robotobold', serif;
 	display: block;
 	font-size: 16px;
 }
-.submit {
+.submit, .button {
 	background: #439ad5;
 	border-radius: 5px;
 	padding: 10px;
@@ -373,6 +803,18 @@ label {
 	color: #FFF;
 	&.disabled {
 		opacity: 0.5;
+	}
+	&.accept {
+		background: #e6e6e6 url(../img/check.png) 10px center no-repeat;
+		padding-left: 40px;
+		font-family: 'robotobold', serif;
+		color: #2f2f2f;
+	}
+	&.showmap {
+		background: #e6e6e6 url(../img/pin-small.png) 10px center no-repeat;
+		padding-left: 40px;
+		font-family: 'robotobold', serif;
+		color: #2f2f2f;
 	}
 }
 
