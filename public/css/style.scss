@@ -208,6 +208,24 @@ body.menuopen {
 		transform: translate3d(75px, 0, 0);
 	}
 }
+<<<<<<< HEAD
+=======
+body.showmap {
+	.view.msgprofile {
+		height: 20%;
+		.chat {
+			height: 0;
+			padding: 0;
+		}
+		.info {
+			height: 100%;
+		}
+	}
+	#map {
+		height: 80%;
+	}
+}
+>>>>>>> parent of 98b8cc2... småpill
 .searchicon {
 	background: url(../img/search-icon.png) center 10px no-repeat;	
 }
@@ -236,6 +254,31 @@ body.menuopen {
 		position: static;
 		z-index: 1;
 		-webkit-transform: translate3d(0, 0, 0);
+<<<<<<< HEAD
+=======
+		&.profile, &.statistics, &.msgview, &.add {
+			position: absolute;
+			top: 0;
+			background: #ffa274;
+			width: 100%;
+			height: 100%;
+		}
+		&.statistics {
+			background: #2cc3a1;
+		}
+		&.routelist, &.findroutes {
+			position: absolute;
+			height: 70%;
+			top: 30%;
+			overflow: auto;
+			width: 100%;
+		}
+		&.msgprofile {
+			height: 70%;
+			top: 30%;
+			overflow-y: visible;
+		}
+>>>>>>> parent of 98b8cc2... småpill
 	}
 }
 .profileimg {
