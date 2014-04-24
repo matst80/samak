@@ -8,20 +8,22 @@
 
 </head>
 <body>
+
 	<div id="menuwrap">
 		<div class="pusher">
-			<div id="menu">
+			<div id="menutwo">
 				<ul>
-					<li><a class="searchicon">Sök</a></li>
-					<li><a class="addicon" data-view="add">Ny resa</a></li>
-					<li><a class="profileicon" data-view="profile">Profil</a></li>
-					<li><a class="travelicon" data-view="routelist">Resor</a></li>
-					<li><a class="statisticsicon">Statistik</a></li>
+					<li><a data-view="findroutes"><i class="fa fa-search"></i>Sök</a></li>
+					<li><a data-view="add"><i class="fa fa-map-marker"></i>Ny resa</a></li>
+					<li><a data-view="msgview"><i class="fa fa-comments-o"></i>Chat<span class="noimsgs">12</span></a></li>
+					<li><a data-view="profile"><i class="fa fa-user"></i>Profil</a></li>
+					<li><a data-view="routelist"><i class="fa fa-road"></i>Resor</a></li>
+					<li><a class="statsicon" data-view="statistics"><i class="fa fa-leaf"></i>Statistik</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<div id="wrapper">
+	<div id="wrappertwo">
 		<!-- <div class="menubtn"></div> -->
 		<!-- <button id="menubtn" class="grid-button rearrange" type="button" role="button" aria-label="Toggle Navigation" >
 		  <span class="grid"></span>
@@ -30,27 +32,38 @@
 		  <span class="lines"></span>
 		</button>
 		<div id="logo"></div>
-		<section class="view msgprofile show">
-			<section>
+		<section>
 				<div id="map" style="width:100%;"></div>
 			</section>
+		<section class="view findroutes show">
+			<div class="pad inps">
+				<div class="inprow">
+					<label for="from">Från:</label>
+					<input id="from" type="text" />
+				</div>
+				<div class="inprow">
+					<label for="to">Till:</label>
+					<input id="to" type="text" />
+				</div>
+			</div>
+			<ul id="findroutes">
+			</ul>
+		</section>
+		<section class="view msgprofile">
 			<div class="info">
 				<b>USERS</b>
 				<img src="img/defimg.png" alt="Profilbild" class="profileimg" />
 				<div id="users"></div>
-<<<<<<< HEAD
-=======
 				<div class="smallinfo">
 					<span class="seats"><i class="fa fa-users"></i>3/3</span>
 					<span class="distance"><i class="fa fa-road"></i>2,1mil</span>
 				</div>
-				<div class="tripprice">87kr</div>
+				<div class="tripprice">87<span class="thin">kr</span></div>
 				<div class="startstop">
 					Solna centrum - T-Centralen
 				</div>
 				<div class="button accept">Acceptera</div>
 				<div class="button showmap">Visa karta</div>
->>>>>>> parent of 98b8cc2... småpill
 			</div>
 			<div class="chat">
 				<div id="conversation">meddelanden</div>
@@ -61,34 +74,64 @@
 				</div>
 			</div>
 		</section>
-		<section class="view profile padtop">
+		<section class="view msgview padtop">
+			<ul id="msglist">
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+				<li><div class="userinfo"><img src="img/defimg.png" class="profileimg"><div class="rating"></div><span class="username">Namn Namnsson</span></div><span class="noimsgs">4</span></li>
+			</ul>
+		</section>
+		<section class="view profile pad padtop">
 			<div id="userdata">laddar...</div>
 			<img id="profilepic" alt="profilbild" />
+			<div class="carinfo">
+				<div class="inprow">
+					<label>Co2-Utsläpp g/km</label>
+					<input type="number" id="co2" placeholder="Ex: 216" />
+				</div>
+				<div class="inprow">
+					<label>Tillverkare</label>
+					<input type="text" id="carmaker" placeholder="Ex: Volvo" />
+				</div>
+				<div class="inprow">
+					<label>Modell</label>
+					<input type="text" id="carmodel" placeholder="Ex: V70" />
+				</div>
+			</div>
 			<a href="/logout">Logga ut</a>
 		</section>
 		<section class="view add pad padtop">
-			<div>
+			<div class="inprow">
 				<label for="from">Från:</label>
 				<input id="from" type="text" />
 			</div>
-			<div>
+			<div class="inprow">
 				<label for="to">Till:</label>
 				<input id="to" type="text" />
 			</div>
-			<div>
+			<div class="inprow">
 				<label for="to">Åker:</label>
 				<input id="startdate" type="date" />
 				<input id="starttime" type="time" />
-				
+
 			</div>
-			<div>
+			<div class="inprow">
+				<label>Pris per medresande</label>
+				<input type="number" id="tripprice" class="priceinp">
+			</div>
+			<div class="inprow">
 				<span class="button disabled submit" id="addroute">Lägg till</span>
 			</div>
-			
+
 		</section>
-		<section class="view routelist padtop">
+		<section class="view routelist">
 			<ul id="routelist">
 			</ul>
+		</section>
+		<section class="view statistics padtop">
+			<div class="pad">
+				<h2>Din statistik</h2>
+			</div>
 		</section>
 	</div>
 <script src="/js/base.js"></script>
