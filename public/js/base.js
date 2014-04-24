@@ -77,12 +77,31 @@
 		var directionsService = new google.maps.DirectionsService();
 		
 
+		function mapRoute(from,to) {
+  			var dr = new google.maps.DirectionsRenderer();
+			dr.setMap(map);
+			var request = {
+			    origin:from,
+			    destination:to,
+			    travelMode: google.maps.TravelMode.DRIVING
+			};
+			directionsService.route(request, function(response, status) {
+				console.log(response);
+				if (status == google.maps.DirectionsStatus.OK) {
+			    	dr.setDirections(response);
+			    }
+			});
+			routeDisplays.push(dr);
+  		}
+
 		$.getJSON('/api/routes',function(d) {
 			for(var i=0;i<d.length;i++)
 			{
+
 				var r = d[i];
 				var li = document.createElement('li');
 				li.innerHTML = '<span>'+r.start+'</span> - <span>'+r.end+'</span>';
+				console.log(r);
 				mapRoute(r.start,r.end);
 				routes.appendChild(li);
 			}
@@ -118,22 +137,7 @@
 		
   		var routeDisplays = [];
 
-  		function mapRoute(from,to) {
-  			var dr = = new google.maps.DirectionsRenderer();
-			dr.setMap(map);
-			var request = {
-			    origin:from,
-			    destination:to,
-			    travelMode: google.maps.TravelMode.DRIVING
-			};
-			directionsService.route(request, function(response, status) {
-				console.log(response);
-				if (status == google.maps.DirectionsStatus.OK) {
-			    	dr.setDirections(response);
-			    }
-			});
-			routeDisplays.push(dr);
-  		}
+  		
 
 		var directionsDisplay = new google.maps.DirectionsRenderer();
 		directionsDisplay.setMap(map);
